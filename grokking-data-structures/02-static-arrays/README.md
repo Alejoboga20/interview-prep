@@ -30,3 +30,9 @@ arr = [None] * 5
 # Initializing an array
 arr = [1, 2, 3, 4, 5]
 ```
+
+## Arrays in Python
+
+In Python we have two options to create arrays, one of them is using `list` and the other is using the `array` module. The `array` module is a part of the Python standard library and it provides a way to create arrays of a fixed type but it's still a dynamically sized array, while `list` can contain elements of different types and can grow dynamically at the same time.
+
+_The price of dynamic resizing is degraded performance and a slower data structure._
