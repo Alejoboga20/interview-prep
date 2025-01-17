@@ -38,3 +38,5 @@ In Python we have two options to create arrays, one of them is using `list` and 
 _The price of dynamic resizing is degraded performance and a slower data structure._
 
 Python uses zero-based indexing for arrays, which means the first element in the array is at the index `0`, and the last element is at the index `n-1`, where `n` is the number of elements in the array.
+
+## Operations on Arrays

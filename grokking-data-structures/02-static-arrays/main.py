@@ -47,8 +47,22 @@ class Array(Generic[T]):
         return self.size
 
 
-str_array = Array[str](3, "hello")
+str_array = Array[str](3, None)
 int_array = Array[int](3, 0)
 
+print(str_array.__str__())
 first = str_array.get_item(0)
 str_array.set_item(1, "world")
+
+
+class UnsortedArray(Generic[T]):
+    def __init__(self, max_size: int = 0, default_value: Optional[T] = None):
+        self.size = 0
+        self.max_size = max_size
+        self.array = Array[Optional[T]](max_size, default_value)
+
+
+unsorted_array = UnsortedArray[str](2, None)
+unsorted_array.array.set_item(0, 'hello')
+unsorted_array.array.set_item(1, 'world')
+print(unsorted_array.array.__str__())
