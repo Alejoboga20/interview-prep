@@ -88,6 +88,18 @@ class UnsortedArray(Generic[T]):
         self.array.remove_item(index)
         self.filled_index -= 1
 
+    def find_first_ocurrence(self, element: T):
+        index_element = None
+        for index in range(0, self.filled_index):
+            if self.array.get_item(index) == element:
+                index_element = index
+                return {"index_element": index_element, "element": element}
+        return None
+
+    def traverse(self):
+        for index in range(0, self.filled_index):
+            print(self.array.get_item(index))
+
 
 unsorted_array = UnsortedArray[str](2, None)
 unsorted_array.insert("hello")
