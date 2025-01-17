@@ -36,3 +36,5 @@ arr = [1, 2, 3, 4, 5]
 In Python we have two options to create arrays, one of them is using `list` and the other is using the `array` module. The `array` module is a part of the Python standard library and it provides a way to create arrays of a fixed type but it's still a dynamically sized array, while `list` can contain elements of different types and can grow dynamically at the same time.
 
 _The price of dynamic resizing is degraded performance and a slower data structure._
+
+Python uses zero-based indexing for arrays, which means the first element in the array is at the index `0`, and the last element is at the index `n-1`, where `n` is the number of elements in the array.
