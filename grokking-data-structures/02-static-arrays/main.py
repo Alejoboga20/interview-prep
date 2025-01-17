@@ -68,8 +68,17 @@ class UnsortedArray(Generic[T]):
         self.array.set_item(self.filled_index, element)
         self.filled_index += 1
 
+    def remove_last_element(self):
+        if self.filled_index == 0:
+            raise ValueError("Array is empty")
+
+        self.array.set_item(self.filled_index - 1, None)
+
 
 unsorted_array = UnsortedArray[str](2, None)
 unsorted_array.insert("hello")
 unsorted_array.insert("world")
+print(unsorted_array.array.__str__())
+
+unsorted_array.remove_last_element()
 print(unsorted_array.array.__str__())
