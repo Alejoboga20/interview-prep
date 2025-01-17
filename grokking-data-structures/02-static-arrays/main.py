@@ -40,6 +40,13 @@ class Array(Generic[T]):
         self.__validate_type__(element)
         self.data[index] = element
 
+    def remove_item(self, index: int):
+        self.__validate_index__(index)
+
+        lower_array = self.data[:index]
+        upper_array = self.data[index + 1:]
+        self.data = lower_array + upper_array
+
     def __str__(self) -> str:
         return str(self.data)
 
@@ -74,6 +81,13 @@ class UnsortedArray(Generic[T]):
 
         self.array.set_item(self.filled_index - 1, None)
 
+    def remove_element(self, index: int):
+        if index < 0 or index >= self.filled_index:
+            raise IndexError("Index out of bounds")
+
+        self.array.remove_item(index)
+        self.filled_index -= 1
+
 
 unsorted_array = UnsortedArray[str](2, None)
 unsorted_array.insert("hello")
@@ -82,3 +96,14 @@ print(unsorted_array.array.__str__())
 
 unsorted_array.remove_last_element()
 print(unsorted_array.array.__str__())
+
+unsorted_with_numbers = UnsortedArray[int](5, None)
+unsorted_with_numbers.insert(1)
+unsorted_with_numbers.insert(2)
+unsorted_with_numbers.insert(3)
+unsorted_with_numbers.insert(4)
+unsorted_with_numbers.insert(5)
+unsorted_with_numbers.remove_element(2)
+print(unsorted_with_numbers.array.__str__())
+unsorted_with_numbers.remove_element(3)
+print(unsorted_with_numbers.array.__str__())
