@@ -57,12 +57,19 @@ str_array.set_item(1, "world")
 
 class UnsortedArray(Generic[T]):
     def __init__(self, max_size: int = 0, default_value: Optional[T] = None):
-        self.size = 0
+        self.filled_index = 0
         self.max_size = max_size
         self.array = Array[Optional[T]](max_size, default_value)
 
+    def insert(self, element: T):
+        if self.filled_index >= self.max_size:
+            raise ValueError("Array is full")
+
+        self.array.set_item(self.filled_index, element)
+        self.filled_index += 1
+
 
 unsorted_array = UnsortedArray[str](2, None)
-unsorted_array.array.set_item(0, 'hello')
-unsorted_array.array.set_item(1, 'world')
+unsorted_array.insert("hello")
+unsorted_array.insert("world")
 print(unsorted_array.array.__str__())
