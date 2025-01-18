@@ -48,17 +48,24 @@ class Array(Generic[T]):
         self.data = lower_array + upper_array
 
     def find_max(self):
-        if self.element_type is int:
-            max_value = None
-            max_value_index = -1
-
-            for index in range(1, self.size):
-                if self.data[index] is not None and self.data[index] > max_value:
-                    max_value = self.data[index]  # ✅ Fix reference error
-                    max_value_index = index
-        else:
+        """Find the maximum value in the array (only for integer arrays)"""
+        if self.element_type is not int:
             raise TypeError(
                 "Operation cannot be performed on this type of array")
+
+        max_value = None
+        max_value_index = -1
+
+        for index in range(self.size):
+            value = self.data[index]
+
+            if isinstance(value, int):
+                if max_value is None or value > max_value:
+                    max_value = value
+                    max_value_index = index
+
+        if max_value is None:
+            raise ValueError("No valid integer values in the array")
 
         return {"max_value": max_value, "max_value_index": max_value_index}
 
@@ -71,6 +78,10 @@ class Array(Generic[T]):
 
 str_array = Array[str](3, None)
 int_array = Array[int](3, 0)
+int_array.set_item(0, 1)
+int_array.set_item(1, 2)
+int_array.set_item(2, 3)
+print(f"int_array.find_max(): {int_array.find_max()}")
 
 print(str_array.__str__())
 first = str_array.get_item(0)
