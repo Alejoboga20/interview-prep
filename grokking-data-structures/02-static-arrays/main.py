@@ -47,6 +47,21 @@ class Array(Generic[T]):
         upper_array = self.data[index + 1:]
         self.data = lower_array + upper_array
 
+    def find_max(self):
+        if self.element_type is int:
+            max_value = None
+            max_value_index = -1
+
+            for index in range(1, self.size):
+                if self.data[index] is not None and self.data[index] > max_value:
+                    max_value = self.data[index]  # ✅ Fix reference error
+                    max_value_index = index
+        else:
+            raise TypeError(
+                "Operation cannot be performed on this type of array")
+
+        return {"max_value": max_value, "max_value_index": max_value_index}
+
     def __str__(self) -> str:
         return str(self.data)
 
@@ -109,12 +124,13 @@ print(unsorted_array.array.__str__())
 unsorted_array.remove_last_element()
 print(unsorted_array.array.__str__())
 
-unsorted_with_numbers = UnsortedArray[int](5, None)
+unsorted_with_numbers = UnsortedArray[int](5, 0)
 unsorted_with_numbers.insert(1)
 unsorted_with_numbers.insert(2)
 unsorted_with_numbers.insert(3)
 unsorted_with_numbers.insert(4)
 unsorted_with_numbers.insert(5)
+
 unsorted_with_numbers.remove_element(2)
 print(unsorted_with_numbers.array.__str__())
 unsorted_with_numbers.remove_element(3)
