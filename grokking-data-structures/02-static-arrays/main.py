@@ -47,28 +47,6 @@ class Array(Generic[T]):
         upper_array = self.data[index + 1:]
         self.data = lower_array + upper_array
 
-    def find_max(self):
-        """Find the maximum value in the array (only for integer arrays)"""
-        if self.element_type is not int:
-            raise TypeError(
-                "Operation cannot be performed on this type of array")
-
-        max_value = None
-        max_value_index = -1
-
-        for index in range(self.size):
-            value = self.data[index]
-
-            if isinstance(value, int):
-                if max_value is None or value > max_value:
-                    max_value = value
-                    max_value_index = index
-
-        if max_value is None:
-            raise ValueError("No valid integer values in the array")
-
-        return {"max_value": max_value, "max_value_index": max_value_index}
-
     def __str__(self) -> str:
         return str(self.data)
 
@@ -81,7 +59,6 @@ int_array = Array[int](3, 0)
 int_array.set_item(0, 1)
 int_array.set_item(1, 2)
 int_array.set_item(2, 3)
-print(f"int_array.find_max(): {int_array.find_max()}")
 
 print(str_array.__str__())
 first = str_array.get_item(0)
@@ -146,3 +123,33 @@ unsorted_with_numbers.remove_element(2)
 print(unsorted_with_numbers.array.__str__())
 unsorted_with_numbers.remove_element(3)
 print(unsorted_with_numbers.array.__str__())
+
+
+def find_max_in_array(int_array: Array[int]):
+    """ Find Max in Array of integers"""
+    if int_array.element_type is not int:
+        raise TypeError(
+            "Operation cannot be performed on this type of array")
+
+    max_value = None
+    max_value_index = -1
+
+    for index in range(0, int_array.__len__() - 1):
+        value = int_array.get_item(index)
+
+        if isinstance(value, int):
+            if max_value is None or value > max_value:
+                max_value = value
+                max_value_index = index
+
+    if max_value is None:
+        raise ValueError("No valid integer values in the arrayy")
+
+    return {
+        "max_value": max_value,
+        "max_value_index": max_value_index
+    }
+
+
+print(
+    f"find_max_in_array(int_array=int_array): {find_max_in_array(int_array=int_array)}")
