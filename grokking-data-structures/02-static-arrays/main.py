@@ -177,8 +177,49 @@ def find_min_in_array(int_array: Array[int]):
     }
 
 
+def find_min_and_max_in_array(int_array: Array[int]):
+    """ Find min and max in Array of integers"""
+    """
+    Performing both operations using the same loop is more efficient 
+    than having two separated loops
+    """
+    if int_array.element_type is not int:
+        raise TypeError(
+            "Operation cannot be performed on this type of array")
+
+    min_value = None
+    min_value_index = -1
+
+    max_value = None
+    max_value_index = -1
+
+    for index in range(0, int_array.__len__() - 1):
+        value = int_array.get_item(index)
+
+        if isinstance(value, int):
+            if min_value is None or value < min_value:
+                min_value = value
+                min_value_index = index
+            if max_value is None or value > max_value:
+                max_value = value
+                max_value_index = index
+
+    if min_value is None:
+        raise ValueError("No valid integer values in the arrayy")
+
+    return {
+        "min_value": min_value,
+        "min_value_index": min_value_index,
+        "max_value": max_value,
+        "max_value_index": max_value_index,
+    }
+
+
 print(
     f"find_max_in_array(int_array=int_array): {find_max_in_array(int_array=int_array)}")
 
 print(
     f"find_min_in_array(int_array=int_array): {find_min_in_array(int_array=int_array)}")
+
+print(
+    f"find_min_and_max_in_array(int_array=int_array): {find_min_and_max_in_array(int_array=int_array)}")
