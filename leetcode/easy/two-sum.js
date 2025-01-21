@@ -8,7 +8,8 @@ You can return the answer in any order.
 const numsArray = [2, 7, 11, 15];
 const target = 9;
 
-const twoSum = (nums, target) => {
+const twoSum = (nums = [], target) => {
+	/* Solution O(n2) */
 	for (let i = 0; i < nums.length; i++) {
 		const firstElement = nums[i];
 
