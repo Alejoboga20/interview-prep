@@ -68,9 +68,24 @@ firstList.append(1);
 firstList.append(2);
 firstList.append(3);
 
-secondList.append(1);
+secondList.append(2);
 secondList.append(3);
-secondList.append(4);
+secondList.append(5);
 
-firstList.printList();
-secondList.printList();
+const mergeTwoLists = (
+	firstList = new LinkedList(),
+	secondList = new LinkedList()
+) => {
+	const firstPointer = firstList.head;
+	const secondPointer = secondList.head;
+
+	if (!firstPointer) return secondList;
+	if (!secondPointer) return firstList;
+
+	const mergedList = new LinkedList();
+
+	return mergedList;
+};
+
+const mergedList = mergeTwoLists(firstList, secondList);
+mergedList.printList();
