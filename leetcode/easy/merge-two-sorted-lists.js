@@ -67,22 +67,47 @@ const secondList = new LinkedList();
 firstList.append(1);
 firstList.append(2);
 firstList.append(3);
+firstList.append(4);
 
+secondList.append(1);
 secondList.append(2);
 secondList.append(3);
 secondList.append(5);
+secondList.append(7);
 
 const mergeTwoLists = (
 	firstList = new LinkedList(),
 	secondList = new LinkedList()
 ) => {
-	const firstPointer = firstList.head;
-	const secondPointer = secondList.head;
+	let firstPointer = firstList.head;
+	let secondPointer = secondList.head;
 
 	if (!firstPointer) return secondList;
 	if (!secondPointer) return firstList;
 
 	const mergedList = new LinkedList();
+
+	while (firstPointer || secondPointer) {
+		if (!firstPointer && secondPointer) {
+			mergedList.append(secondPointer.val);
+			secondPointer = secondPointer.next;
+		}
+
+		if (!secondPointer && firstPointer) {
+			mergedList.append(firstPointer.val);
+			firstPointer = firstPointer.next;
+		}
+
+		if (firstPointer && secondPointer) {
+			if (firstPointer.val > secondPointer.val) {
+				mergedList.append(secondPointer.val);
+				secondPointer = secondPointer.next;
+			} else {
+				mergedList.append(firstPointer.val);
+				firstPointer = firstPointer.next;
+			}
+		}
+	}
 
 	return mergedList;
 };
