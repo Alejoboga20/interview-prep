@@ -39,6 +39,37 @@ const findFirstOccurrenceInString = (haystack = '', needle = '') => {
 	return indexOfFirstOcurrence;
 };
 
+const findFirstWithoutArrayMethods = (haystack = '', needle = '') => {
+	let indexOfTheFirstOcurrence = -1;
+	const needleLenght = needle.length;
+	const haystackLength = haystack.length;
+
+	for (outerIndex = 0; outerIndex < haystackLength; outerIndex++) {
+		let foundOccurrence = false;
+		for (innerIndex = 0; innerIndex < needleLenght; innerIndex++) {
+			if (haystack[innerIndex + outerIndex] === needle[innerIndex]) {
+				foundOccurrence = true;
+			} else {
+				foundOccurrence = false;
+				break;
+			}
+		}
+
+		if (foundOccurrence) {
+			indexOfTheFirstOcurrence = outerIndex;
+			break;
+		}
+	}
+
+	return indexOfTheFirstOcurrence;
+};
+
 console.log(findFirstOccurrenceInString('dadbutsadsad', 'sad'));
+console.log(findFirstOccurrenceInString('sasadsasad', 'sasad'));
 console.log(findFirstOccurrenceInString('leetcode', 'sad'));
 console.log(findFirstOccurrenceInString('leetcode', 'code'));
+
+console.log(findFirstWithoutArrayMethods('dadbutsadsad', 'sad'));
+console.log(findFirstWithoutArrayMethods('sasadsasad', 'sasad'));
+console.log(findFirstWithoutArrayMethods('leetcode', 'sad'));
+console.log(findFirstWithoutArrayMethods('leetcode', 'code'));
