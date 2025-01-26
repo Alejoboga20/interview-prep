@@ -59,7 +59,30 @@ const findInsertPostion = (nums = [], target) => {
 	}
 };
 
+const searchWithBinarySearch = (nums = [], target) => {
+	let left = 0;
+	let right = nums.length - 1;
+	let pivot;
+
+	while (left <= right) {
+		pivot = Math.floor((left + right) / 2);
+		const element = nums[pivot];
+
+		if (element === target) return pivot;
+
+		if (element < target) left = pivot + 1;
+		else return (right = pivot - 1);
+	}
+
+	return nums[pivot] < target ? pivot + 1 : pivot;
+};
+
 console.log(findInsertPostion([1, 3, 5, 6], 0));
 console.log(findInsertPostion([1, 3, 5, 6], 5));
 console.log(findInsertPostion([1, 3, 5, 6], 2));
 console.log(findInsertPostion([1, 3, 5, 6], 7));
+
+console.log(searchWithBinarySearch([1, 3, 5, 6], 0));
+console.log(searchWithBinarySearch([1, 3, 5, 6], 5));
+console.log(searchWithBinarySearch([1, 3, 5, 6], 2));
+console.log(searchWithBinarySearch([1, 3, 5, 6], 7));
