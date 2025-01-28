@@ -58,3 +58,35 @@ console.log(mySqrt(8));
 console.log(mySqrt(4));
 console.log(mySqrt(1));
 console.log(mySqrt(0));
+
+const mySqrtWithBinarySearch = (x = 0) => {
+	let left = 0;
+	let right = x;
+	let pivot = 0;
+
+	while (left <= right) {
+		pivot = Math.floor((left + right) / 2);
+		const square = pivot * pivot;
+		if (square === x) {
+			return pivot;
+		}
+		if (square < x) {
+			const nextSquare = (pivot + 1) * (pivot + 1);
+			if (nextSquare > x) {
+				return pivot;
+			}
+
+			left = pivot + 1;
+		} else {
+			right = pivot - 1;
+		}
+	}
+};
+
+console.log(mySqrtWithBinarySearch(26));
+console.log(mySqrtWithBinarySearch(25));
+console.log(mySqrtWithBinarySearch(16));
+console.log(mySqrtWithBinarySearch(8));
+console.log(mySqrtWithBinarySearch(4));
+console.log(mySqrtWithBinarySearch(1));
+console.log(mySqrtWithBinarySearch(0));
