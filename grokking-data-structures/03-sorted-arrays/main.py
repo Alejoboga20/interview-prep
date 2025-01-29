@@ -15,14 +15,36 @@ class SortedArray():
         if (self.filled_index == self.size):
             raise ValueError("Array already full")
 
-    def insert_element(self, element: int):
+    def __validate_index__(self, index_to_validate: int):
+        """Check if the index is not out of bounds"""
+        if (index_to_validate > self.filled_index - 1):
+            raise IndexError("Index out of bounds")
+
+    def __delete_element__(self, index_to_delete: int):
+        for i in range(index_to_delete, self.filled_index - 1, 1):
+            self.data[i] = self.data[i + 1]
+
+        self.filled_index -= 1
+
+    def __clean_unfilled_slots(self):
+        print(f"filled_index: {self.filled_index}, size: {self.size}")
+        for index in range(self.filled_index, self.size, 1):
+            print(f"index: {index}")
+            self.data[index] = 0
+
+    def search_by_value(self, element: int) -> None | int:
+        index_of_the_element = None
+
+        return index_of_the_element
+
+    def insert_element(self, element: int) -> None:
         """Implement Insertion Sort"""
         self.__validate_insert__()
 
         for index in range(self.filled_index, 0, -1):
             current_element = self.data[index - 1]
 
-            if current_element <= element:  # _,_
+            if current_element <= element:
                 self.data[index] = element
                 self.filled_index += 1
                 return
@@ -31,6 +53,19 @@ class SortedArray():
 
         self.data[0] = element
         self.filled_index += 1
+
+    def delete_element_by_index(self, index_to_delete: int) -> None:
+        self.__validate_index__(index_to_delete)
+        self.__delete_element__(index_to_delete)
+        self.__clean_unfilled_slots()
+
+    def delete_element_by_value(self, target: int) -> None:
+        index_to_delete = self.search_by_value(target)
+
+        if index_to_delete is None:
+            raise ValueError(f"Unable to delete element {target}: Entry not found")
+
+        self.__delete_element__(index_to_delete)
 
 
 sorted_array = SortedArray(10)
@@ -55,4 +90,9 @@ print(sorted_array.__str__())
 sorted_array.insert_element(0)
 print(sorted_array.__str__())
 sorted_array.insert_element(15)
+print(sorted_array.__str__())
+
+sorted_array.delete_element_by_index(4)
+print(sorted_array.__str__())
+sorted_array.delete_element_by_index(4)
 print(sorted_array.__str__())
