@@ -27,15 +27,31 @@ class SortedArray():
         self.filled_index -= 1
 
     def __clean_unfilled_slots(self):
-        print(f"filled_index: {self.filled_index}, size: {self.size}")
         for index in range(self.filled_index, self.size, 1):
-            print(f"index: {index}")
             self.data[index] = 0
 
-    def search_by_value(self, element: int) -> None | int:
-        index_of_the_element = None
+    def linear_search_by_value(self, target: int):
+        for index in range(self.filled_index):
+            if self.data[index] == target:
+                return index
+            elif self.data[index] > target:
+                return None
 
-        return index_of_the_element
+    def binary_search_by_value(self, target: int):
+        left_pointer = 0
+        right_pointer = self.filled_index - 1
+
+        while left_pointer <= right_pointer:
+            middle_index = (right_pointer + left_pointer) // 2
+            middle_value = self.data[middle_index]
+
+            if middle_value == target:
+                return middle_index
+            elif middle_value > target:
+                right_pointer = middle_index - 1
+            else:
+                left_pointer = middle_index + 1
+        return None
 
     def insert_element(self, element: int) -> None:
         """Implement Insertion Sort"""
@@ -60,12 +76,14 @@ class SortedArray():
         self.__clean_unfilled_slots()
 
     def delete_element_by_value(self, target: int) -> None:
-        index_to_delete = self.search_by_value(target)
+        index_to_delete = self.binary_search_by_value(target)
+        # index_to_delete = self.linear_search_by_value(target)
 
         if index_to_delete is None:
             raise ValueError(f"Unable to delete element {target}: Entry not found")
 
         self.__delete_element__(index_to_delete)
+        self.__clean_unfilled_slots()
 
 
 sorted_array = SortedArray(10)
@@ -90,6 +108,13 @@ print(sorted_array.__str__())
 sorted_array.insert_element(0)
 print(sorted_array.__str__())
 sorted_array.insert_element(15)
+print(sorted_array.__str__())
+
+sorted_array.delete_element_by_value(15)
+print(sorted_array.__str__())
+sorted_array.delete_element_by_value(1)
+print(sorted_array.__str__())
+sorted_array.delete_element_by_value(0)
 print(sorted_array.__str__())
 
 sorted_array.delete_element_by_index(4)
