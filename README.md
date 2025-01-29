@@ -9,3 +9,6 @@ I'll be following the content from the books `Grokking Algorithms` by `Aditya Bh
 **Data Structures**
 
 1. [Introduction](./grokking-data-structures/01-ds-introduction/README.md)
+2. [Static Arrays](./grokking-data-structures/02-static-arrays/README.md)
+3. [Sorted Arrays](./grokking-data-structures/03-sorted-arrays/README.md)
+4. [Big O Notation](./grokking-data-structures/04-big-o-notation/README.md)
