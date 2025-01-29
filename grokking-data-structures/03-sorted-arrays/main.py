@@ -30,6 +30,10 @@ class SortedArray():
         for index in range(self.filled_index, self.size, 1):
             self.data[index] = 0
 
+    def traverse_array(self):
+        for index in range(self.filled_index):
+            print(f"Element #{index}: {self.data[index]}")
+
     def linear_search_by_value(self, target: int):
         for index in range(self.filled_index):
             if self.data[index] == target:
@@ -109,6 +113,7 @@ sorted_array.insert_element(0)
 print(sorted_array.__str__())
 sorted_array.insert_element(15)
 print(sorted_array.__str__())
+sorted_array.traverse_array()
 
 sorted_array.delete_element_by_value(15)
 print(sorted_array.__str__())
