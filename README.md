@@ -12,3 +12,21 @@ I'll be following the content from the books `Grokking Algorithms` by `Aditya Bh
 2. [Static Arrays](./grokking-data-structures/02-static-arrays/README.md)
 3. [Sorted Arrays](./grokking-data-structures/03-sorted-arrays/README.md)
 4. [Big O Notation](./grokking-data-structures/04-big-o-notation/README.md)
+
+## Extra Resources
+
+### Articles
+
+LeetCode, Algorithms and Data Structures
+
+- [Starting with Leedcode](https://medium.com/algomaster-io/how-to-start-leetcode-in-2025-as-a-beginner-5306b44e42f9)
+- [Tips for leetcode problems](https://medium.com/algomaster-io/leetcode-was-hard-until-i-learned-these-15-patterns-19d15f6d71f1)
+- [Master Algorithms and DS](https://medium.com/algomaster-io/how-i-mastered-data-structures-and-algorithms-eb8c5273c56d)
+
+System Design
+
+- [System Design Guide](https://medium.com/algomaster-io/a-step-by-step-guide-to-system-design-interviews-a11fdc522d0d)
+
+### Payed Courses
+
+- [CodeCrafters](https://codecrafters.io/)
