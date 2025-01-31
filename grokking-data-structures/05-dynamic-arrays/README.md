@@ -25,3 +25,5 @@ We could also need to take care of shrinking the array when the number of elemen
 2. If we need to insert a new element and the static array is already filled to its maximum capacity, we resize the array by doubling its size.
 
 3. After we remove an element from the array, we resize the array by halving its size if only a quarter of the maximum capacity is filled.
+
+Code here: [dynamic_array.py](main.py)
