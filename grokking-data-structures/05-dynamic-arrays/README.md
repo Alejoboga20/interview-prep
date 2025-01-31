@@ -19,3 +19,9 @@ We could also need to take care of shrinking the array when the number of elemen
 **_Note: There is no perfect solution because the perfect choice could only be made if we knew the sequence of insertions and deletions in advance. But this is a reasonably good solution that works well in most cases._**
 
 ## Implementing dynamic arrays
+
+1. We start with an array of size one (unless the client specifies an initial capacity).
+
+2. If we need to insert a new element and the static array is already filled to its maximum capacity, we resize the array by doubling its size.
+
+3. After we remove an element from the array, we resize the array by halving its size if only a quarter of the maximum capacity is filled.

@@ -28,6 +28,10 @@ System Design
 
 - [System Design Guide](https://medium.com/algomaster-io/a-step-by-step-guide-to-system-design-interviews-a11fdc522d0d)
 
+Challenges - Practice
+
+- [Build your own X](https://github.com/codecrafters-io/build-your-own-x)
+
 ### Payed Courses
 
 - [CodeCrafters](https://codecrafters.io/)
