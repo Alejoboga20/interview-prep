@@ -27,7 +27,14 @@ class SinglyLinkedList:
         is_empty_list = self.size == 0
         return is_empty_list
 
-    def insert_element(self, value):
+    def insert_element_start(self, value):
+        old_head = self.head
+        new_head = ListNode(value)
+        self.head = new_head
+        new_head.next = old_head
+        self.size += 1
+
+    def insert_element_end(self, value):
         """Intert a new node into the list"""
         new_node = ListNode(value)
 
@@ -43,7 +50,10 @@ class SinglyLinkedList:
 
 
 linked_list = SinglyLinkedList()
-linked_list.insert_element(1)
-linked_list.insert_element(2)
-linked_list.insert_element(3)
+linked_list.insert_element_end(1)
+linked_list.insert_element_end(2)
+linked_list.insert_element_end(3)
+print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
+
+linked_list.insert_element_start(4)
 print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
