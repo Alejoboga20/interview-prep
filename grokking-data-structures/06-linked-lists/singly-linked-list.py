@@ -27,6 +27,17 @@ class SinglyLinkedList:
         is_empty_list = self.size == 0
         return is_empty_list
 
+    def __search_by_value__(self, target):
+        """Find a value in the list"""
+        current_node = self.head
+
+        while current_node is not None:
+            if current_node.value == target:
+                return current_node
+            current_node = current_node.next
+
+        return None
+
     def traverse_list(self):
         """Traverse List"""
         current_node = self.head
