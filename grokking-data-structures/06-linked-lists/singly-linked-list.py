@@ -22,10 +22,18 @@ class SinglyLinkedList:
 
         return formatted_list_values
 
-    def is_empty(self):
+    def __is_empty__(self):
         """Check if the list is empty"""
         is_empty_list = self.size == 0
         return is_empty_list
+
+    def traverse_list(self):
+        """Traverse List"""
+        current_node = self.head
+
+        while current_node is not None:
+            print(f"(val: {current_node.value}, next: {current_node.next})")
+            current_node = current_node.next
 
     def insert_element_start(self, value):
         old_head = self.head
@@ -57,3 +65,5 @@ print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
 
 linked_list.insert_element_start(4)
 print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
+
+linked_list.traverse_list()
