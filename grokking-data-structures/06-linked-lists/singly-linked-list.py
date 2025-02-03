@@ -1,3 +1,6 @@
+from typing import List
+
+
 class ListNode:
     def __init__(self, value):
         self.value = value
@@ -41,10 +44,13 @@ class SinglyLinkedList:
     def traverse_list(self):
         """Traverse List"""
         current_node = self.head
+        result: List[ListNode] = []
 
         while current_node is not None:
-            print(f"(val: {current_node.value}, next: {current_node.next})")
+            result.append(current_node.value)
             current_node = current_node.next
+
+        return result
 
     def insert_element_start(self, value):
         old_head = self.head
@@ -67,6 +73,25 @@ class SinglyLinkedList:
 
         self.size += 1
 
+    def delete_element(self, target):
+        current_node = self.head
+        previous_node = None
+
+        while current_node is not None:
+            if current_node.value == target:
+                if previous_node is None:
+                    self.head = current_node.next
+                else:
+                    previous_node.next = current_node.next
+
+                self.size -= 1
+                return
+
+            previous_node = current_node
+            current_node = current_node.next
+
+        raise ValueError(f"No element with value {target} was found")
+
 
 linked_list = SinglyLinkedList()
 linked_list.insert_element_end(1)
@@ -77,4 +102,8 @@ print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
 linked_list.insert_element_start(4)
 print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
 
-linked_list.traverse_list()
+print(f"traverse_list: {linked_list.traverse_list()}")
+linked_list.delete_element(3)
+print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
+linked_list.delete_element(4)
+print(f"list: {linked_list.__str__()}, size: {linked_list.size}")
