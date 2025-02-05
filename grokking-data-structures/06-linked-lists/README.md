@@ -39,3 +39,11 @@ That wouldn't be possible with a singly linked list because we would need to tra
 ![alt text](image-4.png)
 
 It is important to note that a doubly linked list requires more memory than a singly linked list because each node has two pointers instead of one. This is a trade-off between memory and performance, but sometimes it is necessary to use a doubly linked list to achieve the desired functionality.
+
+## Circular Linked List
+
+A `Circular Linked List` is a linked list where the last node points to the first node in the list. This means that the list has no end and can be traversed indefinitely. The first node in the list is called the `head`, and the last node is called the `tail`.
+It can be implemented using a singly linked list or a doubly linked list.
+
+![alt text](image-5.png)
+![alt text](image-6.png)
