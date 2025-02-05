@@ -24,7 +24,7 @@ class DoublyLinkedList:
 
         return formatted_list_values
 
-    def insert_element_front(self, value):
+    def insert_element_in_front(self, value):
         new_node = ListNode(value)
 
         if self.head is None:
@@ -38,9 +38,28 @@ class DoublyLinkedList:
 
         self.size += 1
 
+    def insert_element_to_back(self, value):
+        new_node = ListNode(value)
+
+        if self.tail is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            old_tail = self.tail
+            self.tail = new_node
+            self.tail.prev = old_tail
+            old_tail.next = self.tail
+
+        self.size += 1
+
 
 doubly_linked_list = DoublyLinkedList()
-doubly_linked_list.insert_element_front(1)
-doubly_linked_list.insert_element_front(2)
-doubly_linked_list.insert_element_front(3)
+doubly_linked_list.insert_element_in_front(1)
+doubly_linked_list.insert_element_in_front(2)
+doubly_linked_list.insert_element_in_front(3)
+print(f"list: {doubly_linked_list.__str__()}, size: {doubly_linked_list.size}")
+
+doubly_linked_list.insert_element_to_back(6)
+doubly_linked_list.insert_element_to_back(5)
+doubly_linked_list.insert_element_to_back(4)
 print(f"list: {doubly_linked_list.__str__()}, size: {doubly_linked_list.size}")
