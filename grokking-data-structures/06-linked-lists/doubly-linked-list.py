@@ -24,6 +24,48 @@ class DoublyLinkedList:
 
         return formatted_list_values
 
+    def traverse(self):
+        """List traversal"""
+        current_node = self.head
+
+        while current_node is not None:
+            print(f"""
+                  (value: {current_node.value},
+                  prev: {current_node.prev.value if current_node.prev is not None else None},
+                  next: {current_node.next.value if current_node.next is not None else None})""")
+            current_node = current_node.next
+
+    def search_by_value(self, target):
+        current_node = self.head
+
+        while current_node is not None:
+            if current_node.value == target:
+                return current_node
+
+            current_node = current_node.next
+
+        raise ValueError(f"Value {target} not found in list")
+
+    def delete(self, target):
+        node_to_delete = self.search_by_value(target)
+        prev_node = node_to_delete.prev
+        next_node = node_to_delete.next
+
+        if prev_node is None:
+            self.head = node_to_delete.next
+            if self.head is None:
+                self.tail = None
+            else:
+                self.head.prev = None
+        elif next_node is None:
+            self.tail = prev_node
+            self.tail.next = None
+        else:
+            prev_node.next = next_node
+            next_node.prev = prev_node
+
+        self.size -= 1
+
     def insert_element_in_front(self, value):
         new_node = ListNode(value)
 
@@ -63,3 +105,10 @@ doubly_linked_list.insert_element_to_back(6)
 doubly_linked_list.insert_element_to_back(5)
 doubly_linked_list.insert_element_to_back(4)
 print(f"list: {doubly_linked_list.__str__()}, size: {doubly_linked_list.size}")
+doubly_linked_list.traverse()
+
+doubly_linked_list.delete(5)
+print(f"list: {doubly_linked_list.__str__()}, size: {doubly_linked_list.size}")
+doubly_linked_list.delete(1)
+print(f"list: {doubly_linked_list.__str__()}, size: {doubly_linked_list.size}")
+doubly_linked_list.traverse()
