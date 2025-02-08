@@ -27,7 +27,7 @@ class SinglyLinkedList:
 
     def __is_empty__(self):
         """Check if the list is empty"""
-        is_empty_list = self.size == 0
+        is_empty_list = self.head is None
         return is_empty_list
 
     def __search_by_value__(self, target):
@@ -73,6 +73,12 @@ class SinglyLinkedList:
 
         self.size += 1
 
+    def delete_element_start(self):
+        if self.head is not None:
+            new_head = self.head.next
+            self.head = new_head
+            self.size -= 1
+
     def delete_element(self, target):
         current_node = self.head
         previous_node = None
@@ -98,4 +104,24 @@ class Stack:
         self.data = SinglyLinkedList()
 
     def push(self, value):
-        self.data.insert_element_start(value)
+        # before calling the underlying method we could perform some validations at this point
+        return self.data.insert_element_start(value)
+
+    def pop(self):
+        if self.data.__is_empty__():
+            raise ValueError("Canont pop from an empty stack")
+        return self.data.delete_element_start()
+
+
+stack = Stack()
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4)
+print(stack.data.__str__())
+stack.pop()
+print(stack.data.__str__())
+stack.pop()
+print(stack.data.__str__())
+stack.pop()
+print(stack.data.__str__())
