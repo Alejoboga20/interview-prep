@@ -99,6 +99,18 @@ class SinglyLinkedList:
 
         raise ValueError(f"No element with value {target} was found")
 
+    def get_ith_element(self, position: int):
+        if position > self.size - 1:
+            raise IndexError(f"Cannot access position {position} in a list of size {self.size}")
+
+        current_node = self.head
+        counter = 0
+        while current_node is not None:
+            if counter == position:
+                return current_node
+            current_node = current_node.next
+            counter += 1
+
 
 class Stack:
     def __init__(self):
@@ -116,9 +128,14 @@ class Stack:
     def peek(self):
         if self.data.__is_empty__():
             raise ValueError("Cannot peek at an empty stack")
-        peek_element = copy.deepcopy(self.data.head)
+        peek_element = self.get_ith_element(0)
 
         return peek_element
+
+    def get_ith_element(self, position: int):
+        if position > self.data.size - 1:
+            raise IndexError(f"Cannot access position {position} in a stack of size {self.data.size}")
+        return self.data.get_ith_element(position)
 
 
 stack = Stack()
@@ -129,8 +146,3 @@ stack.push(4)
 print(stack.data.__str__())
 stack.pop()
 print(stack.data.__str__())
-stack.pop()
-print(stack.data.__str__())
-stack.pop()
-print(stack.data.__str__())
-print(stack.peek())
