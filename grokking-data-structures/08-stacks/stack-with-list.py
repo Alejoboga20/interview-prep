@@ -1,3 +1,4 @@
+import copy
 from typing import List
 
 
@@ -109,8 +110,15 @@ class Stack:
 
     def pop(self):
         if self.data.__is_empty__():
-            raise ValueError("Canont pop from an empty stack")
+            raise ValueError("Cannot pop from an empty stack")
         return self.data.delete_element_start()
+
+    def peek(self):
+        if self.data.__is_empty__():
+            raise ValueError("Cannot peek at an empty stack")
+        peek_element = copy.deepcopy(self.data.head)
+
+        return peek_element
 
 
 stack = Stack()
@@ -125,3 +133,4 @@ stack.pop()
 print(stack.data.__str__())
 stack.pop()
 print(stack.data.__str__())
+print(stack.peek())
