@@ -15,6 +15,7 @@ I'll be following the content from the books `Grokking Algorithms` by `Aditya Bh
 5. [Dynamic Arrays](./grokking-data-structures/05-dynamic-arrays/README.md)
 6. [Linked Lists](./grokking-data-structures/06-linked-lists/README.md)
 7. [Abstract Data Types](./grokking-data-structures/07-abstract-data-types/README.md)
+8. [Stacks](./grokking-data-structures/08-stacks/README.md)
 
 ## Extra Resources
 
