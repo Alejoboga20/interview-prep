@@ -9,3 +9,7 @@ In `queues` there is only one place elements can go when they are added to the q
 ![alt text](image-2.png)
 
 For a `queue` we need to keep references to the front and rear of the queue. This allows us to add elements to the rear and remove elements from the front. We can use a `linked list` to implement a queue. We can add elements to the rear of the linked list and remove elements from the front.
+
+We can implement a `queue` using a `single linked list`. We can add elements to the rear of the linked list and remove elements from the front. We can also use a `doubly linked list` to implement a queue.
+
+Implementation with doubly linked list here: [Queue - Singly](queue-singly-list.py)
