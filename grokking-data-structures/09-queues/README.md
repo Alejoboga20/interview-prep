@@ -55,3 +55,9 @@ queue.append(1)    # Enqueue
 queue.append(2)
 print(queue.popleft())  # Dequeue, O(1)
 ```
+
+## Implementing a Circular Queue
+
+A `circular queue` is a variation of a queue that uses a fixed-size array to store elements. When the rear of the queue reaches the end of the array, it wraps around to the beginning. This allows the queue to reuse the empty slots at the front of the array.
+
+![alt text](image-3.png)
