@@ -12,4 +12,5 @@ For a `queue` we need to keep references to the front and rear of the queue. Thi
 
 We can implement a `queue` using a `single linked list`. We can add elements to the rear of the linked list and remove elements from the front. We can also use a `doubly linked list` to implement a queue.
 
-Implementation with doubly linked list here: [Queue - Singly](queue-singly-list.py)
+Implementation with singly linked list here: [Queue - Singly](queue-singly-list.py)
+Implementation with doubly linked list here: [Queue - Doubly](queue-doubly-list.py)
