@@ -14,3 +14,44 @@ We can implement a `queue` using a `single linked list`. We can add elements to 
 
 Implementation with singly linked list here: [Queue - Singly](queue-singly-list.py)
 Implementation with doubly linked list here: [Queue - Doubly](queue-doubly-list.py)
+
+## Implementing Queues: Linked List vs. Array in Python
+
+When implementing a queue, the choice between using a linked list (singly or doubly) and an array (list in Python) depends on performance trade-offs:
+
+1.  Linked List (Singly or Doubly)
+    Pros:
+
+            Efficient O(1) enqueue (append at tail) and dequeue (pop from head).
+            No need to shift elements when removing items from the front.
+            Can grow dynamically without memory reallocation.
+
+    Cons:
+
+          Requires extra memory for pointers (especially for a doubly linked list).
+          More complex implementation than arrays.
+          Slower cache performance due to non-contiguous memory storage.
+
+2.  Array (Python List)
+
+    Pros:
+
+          Simpler to implement and use.
+          Fast random access (O(1)) since lists are indexed.
+          Built-in Python lists allow dynamic resizing.
+
+    Cons:
+
+          Removing (pop(0)) from the front is O(n) since all elements need to shift left.
+          If the array grows beyond its allocated memory, resizing takes O(n) time.
+
+Python also offers a built-in `deque` class in the `collections` module that provides an optimized implementation of a double-ended queue. It is a hybrid data structure that combines the features of stacks and queues. The `deque` class is optimized for fast appends and pops from both ends.
+
+```python
+from collections import deque
+
+queue = deque()
+queue.append(1)    # Enqueue
+queue.append(2)
+print(queue.popleft())  # Dequeue, O(1)
+```
