@@ -17,6 +17,7 @@ I'll be following the content from the books `Grokking Algorithms` by `Aditya Bh
 7. [Abstract Data Types](./grokking-data-structures/07-abstract-data-types/README.md)
 8. [Stacks](./grokking-data-structures/08-stacks/README.md)
 9. [Queues](./grokking-data-structures/09-queues/README.md)
+10. [Priority Queues and Heaps](./grokking-data-structures/10-priority-queues-heaps/README.md)
 
 ## Extra Resources
 
