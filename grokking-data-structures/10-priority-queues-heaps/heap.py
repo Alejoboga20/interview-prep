@@ -8,6 +8,14 @@ class Heap:
         else:
             self._elements = []
 
+    def _heapify(self, elements):
+        """Creates a heap out of an array"""
+        self._elements = elements[:]
+        last_inner_node_index = self._first_leaf_index() - 1
+
+        for index in range(last_inner_node_index, -1, -1):
+            self._push_down(index)
+
     def print_levels(self) -> None:
         """Print the heap levels separated by commas, each level on a new line."""
         if not self._elements:
@@ -24,10 +32,6 @@ class Heap:
             print(", ".join(map(str, row)))
             index += level_count
             level += 1
-
-    def _heapify(self, elements):
-        """Creates a heap out of an array"""
-        raise NotImplementedError()
 
     def insert(self, element) -> None:
         self._elements.append(element)
@@ -75,6 +79,12 @@ class Heap:
                 break
 
         self._elements[current_index] = element
+
+    def _first_leaf_index(self):
+        length = self.get_length()
+        first_leaf_index = length // 2
+
+        return first_leaf_index
 
     def _highest_priority_child_index(self, index):
         first_index = self._left_child_index(index)
@@ -129,6 +139,7 @@ for element in heap_elements:
 
 heap.print_levels()
 heap.top()
-heap.print_levels()
-heap.top()
-heap.print_levels()
+
+
+heapified = Heap(elements=heap_elements, element_priority=lambda x: x[1])
+heapified.print_levels()
