@@ -48,6 +48,46 @@ class Heap:
             else:
                 break
 
+    def top(self):
+        if self._is_empty():
+            raise IndexError("Method top called on an empty heap.")
+        if self.get_length() == 1:
+            element = self._elements.pop()
+        else:
+            element = self._elements[0]
+            self._elements[0] = self._elements.pop()
+            self._push_down(0)
+        return element
+
+    def _push_down(self, index: int) -> None:
+        element = self._elements[index]
+        current_index = index
+
+        while True:
+            child_index = self._highest_priority_child_index(current_index)
+            if child_index is None:
+                break
+
+            if self._has_lower_priority(element, self._elements[child_index]):
+                self._elements[current_index] = self._elements[child_index]
+                current_index = child_index
+            else:
+                break
+
+        self._elements[current_index] = element
+
+    def _highest_priority_child_index(self, index):
+        first_index = self._left_child_index(index)
+
+        if first_index >= self.get_length():
+            return None
+        if first_index + 1 >= self.get_length():
+            return first_index
+        if self._has_higher_priority(self._elements[first_index], self._elements[first_index + 1]):
+            return first_index
+        else:
+            return first_index + 1
+
     def _has_lower_priority(self, element_1, element_2):
         return self._priority(element_1) < self._priority(element_2)
 
@@ -62,6 +102,14 @@ class Heap:
 
     def _parent_index(self, index: int):
         return (index - 1) // 2
+
+    def _is_empty(self):
+        is_empty = self.get_length() == 0
+        return is_empty
+
+    def get_length(self) -> int:
+        length = len(self._elements)
+        return length
 
 
 heap_elements = [
@@ -80,4 +128,7 @@ for element in heap_elements:
     heap.insert(element)
 
 heap.print_levels()
-print(heap._elements)
+heap.top()
+heap.print_levels()
+heap.top()
+heap.print_levels()

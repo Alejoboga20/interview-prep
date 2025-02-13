@@ -41,3 +41,5 @@ We can reorganize the elements of the tree linearly, placing each level side-by-
 We can use an array to represent a binary heap. The root of the tree will be at index 0, and the children of the node at index i will be at indexes `(2 * i )+ 1` and `(2 * i) + 2`.
 
 With this implementation we can have efficient insertion and removal operations in `O(log n)` time complexity.
+
+Implementation of a binary heap in Python here: [heap.py](heap.py)
