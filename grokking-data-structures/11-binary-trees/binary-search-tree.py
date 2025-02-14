@@ -1,28 +1,40 @@
 class BinaryTreeNode:
-    def __init__(self, value, left=None, right=None):
+    def __init__(self, value: int, left=None, right=None):
         self._value = value
         self._left: BinaryTreeNode | None = left
         self._right: BinaryTreeNode | None = right
 
-    def set_left(self, value):
+    def set_left(self, value: int):
         self._left = BinaryTreeNode(value)
 
-    def set_right(self, value):
+    def set_right(self, value: int):
         self._right = BinaryTreeNode(value)
 
     def get_left(self):
-        if self._left is None:
-            return None
-        else:
-            return self._left._value
+        return self._left
 
     def get_right(self):
-        if self._right is None:
-            return None
-        else:
-            return self._right._value
+        return self._right
 
 
 class BinarySearchTree:
     def __init__(self):
         self._root: BinaryTreeNode | None = None
+
+    def _search(self, target: int):
+        parent_node = None
+        current_node = self._root
+
+        while current_node is not None:
+            node_value = current_node._value
+
+            if node_value == target:
+                return current_node, parent_node
+            elif target < node_value:
+                parent_node = current_node
+                current_node = current_node.get_left()
+            else:
+                parent_node = current_node
+                current_node = current_node.get_right()
+
+        return None, None
