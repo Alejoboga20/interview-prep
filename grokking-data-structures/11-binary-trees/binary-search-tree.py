@@ -16,6 +16,15 @@ class BinaryTreeNode:
     def get_right(self):
         return self._right
 
+    def find_max_in_subtree(self):
+        parent_node = None
+        current_node = self
+
+        while current_node is not None and current_node.get_right() is not None:
+            parent_node = current_node
+            current_node = current_node.get_right()
+        return current_node, parent_node
+
 
 class BinarySearchTree:
     def __init__(self):
