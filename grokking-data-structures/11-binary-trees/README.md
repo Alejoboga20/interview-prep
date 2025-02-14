@@ -25,3 +25,5 @@ A binary search tree is a binary tree in which every node fits a specific orderi
 **_All BSTs abide by the BST property: for any node N that stores a value v, all nodes in the left subtree of N will have values less than or equal to v, and all nodes in the right subtree of N will have values greater than v._**
 
 ![alt text](image-3.png)
+
+Implementations of the binary tree[here](binary-search-tree.py).
