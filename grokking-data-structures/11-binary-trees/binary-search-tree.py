@@ -47,3 +47,22 @@ class BinarySearchTree:
                 current_node = current_node.get_right()
 
         return None, None
+
+    def inser(self, value):
+        current_node = self._root
+
+        if current_node is None:
+            self._root = BinaryTreeNode(value)
+        else:
+            while current_node is not None:
+                if value <= current_node._value:
+                    if current_node.get_left() is None:
+                        current_node.set_left(value)
+                        break
+                    else:
+                        current_node = current_node.get_left()
+                elif current_node.get_right() is None:
+                    current_node.set_right(value)
+                    break
+                else:
+                    current_node = current_node.get_right()
