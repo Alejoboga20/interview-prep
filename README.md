@@ -2,7 +2,9 @@
 
 This repository contains my learnings during my interview preparation. I'll be adding the code snippets and notes as I learn them.
 
-I'll be following the content from the books `Grokking Algorithms` by `Aditya Bhargava` and `Grokking Data Structures` by `Marcello La Rocca` along with some other resources like leetcode, geeksforgeeks, etc.
+I'll be following the content from the books `Grokking Algorithms` by `Aditya Bhargava` and `Grokking Data Structures` by `Marcello La Rocca` along with some other resources like leetcode, geeksforgeeks, etc, that will be mentioning along the way.
+
+All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 
 ## Table of Contents
 
@@ -18,6 +20,7 @@ I'll be following the content from the books `Grokking Algorithms` by `Aditya Bh
 8. [Stacks](./grokking-data-structures/08-stacks/README.md)
 9. [Queues](./grokking-data-structures/09-queues/README.md)
 10. [Priority Queues and Heaps](./grokking-data-structures/10-priority-queues-heaps/README.md)
+11. [Binary Trees](./grokking-data-structures/11-binary-trees/README.md)
 
 ## Extra Resources
 
