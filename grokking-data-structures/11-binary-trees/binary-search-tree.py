@@ -123,3 +123,12 @@ class BinarySearchTree:
                         parent.set_left(new_node._value)
                     else:
                         parent.set_right(new_node._value)
+
+    def in_order_traversal(self) -> None:
+        raise NotImplementedError("Method not implemented")
+
+    def pre_order_traversal(self) -> None:
+        raise NotImplementedError("Method not implemented")
+
+    def post_order_traversal(self) -> None:
+        raise NotImplementedError("Method not implemented")
