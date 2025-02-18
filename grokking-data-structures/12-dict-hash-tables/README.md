@@ -77,3 +77,29 @@ Two popular open addressing schemes are:
 - **Quadratic Probing**: In quadratic probing, we probe the cells in a quadratic order, starting from the cell where the key was hashed. `p(k,i) = (h(k) + a*i + b*i2) % m`
 
 Compared to chaining, open addressing has one main advantage—you don’t waste memory for the linked lists, and you need only minimal overhead for the array.
+
+## Recap
+
+- The dictionary is an abstract data type for a container that stores elements that can later be searched (or deleted) by key. Dictionaries are used everywhere, from routers to key-value databases.
+
+- We can use several of the data structures discussed in this book to implement a dictionary ADT, but balanced binary search trees are the ones that guarantee the best performance over all operations.
+
+- An implementation using hash tables offers the best average performance for insert, search, and delete.
+
+- A direct-access table is an array where each key (integer element) k is stored at index k, making search-by-value as fast as constant time. Non-integer elements are first converted to integers by extracting a unique ID. Direct-access tables are impractically large.
+
+- A hash table is a special version of an array, where the index of an (integer) element is returned by a special function called a hash function. Hash tables can be much smaller than the range of values stored, making them more practical than direct-access tables.
+
+- Since the range of keys of a hash table can be larger than the number of cells in the table, we can’t avoid conflicts, that is, two keys mapping to the same array cell.
+
+- Conflicts can be resolved through chaining or open addressing.
+
+- In chaining, each table cell references a linked list where the elements are stored. These tables can grow indefinitely.
+
+- In open addressing, a different permutation of the table’s indexes corresponds to each key. If on insert we find that the first index is already taken, then we try the second one, and so on—similarly with search.
+
+- Hash tables with open addressing can’t store more elements than the number of cells. They make deleting elements complicated, and their performance degrades with the filling ratio. Thus, they are rarely used.
+
+- The average running time of insertion, search, and deletion for hash tables is constant time. The worst-case performance, however, is linear time.
+
+- If the hash function used is deterministic or easily guessed by an attacker, it is possible to design a sequence of keys that will cause the hash table to perform very poorly. This originated a vulnerability in servers written in several programming languages, including Perl, PHP, Python, Ruby, Java, and JavaScript.
