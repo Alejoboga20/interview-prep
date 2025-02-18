@@ -66,4 +66,14 @@ class HashTable:
         return self._data[index].search(value_matches_key)
 ```
 
-- **Open Addressing**: All entry records are stored in the bucket array itself. When a new entry has to be inserted, the buckets are examined, starting with the hashed-to slot and proceeding in some probe sequence, until an unoccupied slot is found.
+- **Open Addressing**: In open addressing, for each key, we can probe all m array cells, in some order, until we either find what we were looking for (an element or an empty cell), or we probed all cells. In a way, after a conflict we get a retry, a second chance (and a third chance, and so on). Search works similarly, with one important caveat: the moment we are hashed to an empty cell, we know the search is unsuccessful. Otherwise, we check the value we found, and if it matches the target of the search, we are successful. Otherwise, we know we need to try again.
+
+![alt text](image-6.png)
+
+Two popular open addressing schemes are:
+
+- **Linear Probing**: In linear probing, we probe the cells in a linear order, starting from the cell where the key was hashed. If we reach the end of the array, we wrap around and continue probing from the beginning. `p(k,i) = (h(k) + i) % m`
+
+- **Quadratic Probing**: In quadratic probing, we probe the cells in a quadratic order, starting from the cell where the key was hashed. `p(k,i) = (h(k) + a*i + b*i2) % m`
+
+Compared to chaining, open addressing has one main advantage—you don’t waste memory for the linked lists, and you need only minimal overhead for the array.
