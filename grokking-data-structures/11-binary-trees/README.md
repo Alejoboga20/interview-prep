@@ -27,3 +27,11 @@ A binary search tree is a binary tree in which every node fits a specific orderi
 ![alt text](image-3.png)
 
 Implementations of the binary tree[here](binary-search-tree.py).
+
+## Tree Traversal
+
+Tree traversal is the process of visiting each node in a tree exactly once. There are three ways to traverse a tree:
+
+1. **Pre-order traversal**: In this traversal, we visit the root node first, then the left subtree, and finally the right subtree.
+2. **Post-order traversal**: In this traversal, we visit the left subtree, then the right subtree, and finally the root node.
+3. **In-order traversal**: In this traversal, we visit the left subtree, then the root, and finally the right subtree. This traversal is used to get the nodes in non-decreasing order.

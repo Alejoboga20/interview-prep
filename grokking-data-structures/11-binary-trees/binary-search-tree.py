@@ -4,11 +4,17 @@ class BinaryTreeNode:
         self._left: BinaryTreeNode | None = left
         self._right: BinaryTreeNode | None = right
 
-    def set_left(self, value: int):
-        self._left = BinaryTreeNode(value)
+    def set_left(self, value: int | None = None):
+        if value is None:
+            self._left = None
+        else:
+            self._left = BinaryTreeNode(value)
 
-    def set_right(self, value: int):
-        self._right = BinaryTreeNode(value)
+    def set_right(self, value: int | None = None):
+        if value is None:
+            self._right = None
+        else:
+            self._right = BinaryTreeNode(value)
 
     def get_left(self):
         return self._left
