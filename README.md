@@ -22,6 +22,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 10. [Priority Queues and Heaps](./grokking-data-structures/10-priority-queues-heaps/README.md)
 11. [Binary Trees](./grokking-data-structures/11-binary-trees/README.md)
 12. [Dictionary and Hash Tables](./grokking-data-structures/12-dict-hash-tables/README.md)
+13. [Graphs](./grokking-data-structures/13-graphs/README.md)
 
 ## Extra Resources
 
