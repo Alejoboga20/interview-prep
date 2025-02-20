@@ -88,3 +88,65 @@ In contrast, an adjacency matrix requires memory proportional to the square of t
 **Use adjacency lists when the graph is sparse and adjacency matrices when the graph is dense.**
 
 ## Graph Search
+
+Searching in a graph has a different meaning than what we have seen so far. Sure, we can also search whether a vertex or an edge is in the graph by looking at the adjacency list or the adjacency matrix. But that would underestimate the potential of a graph. Remember, a graph is more than just a container: it stores how entities (the vertices) are related to each other.
+
+### Breadth-First Search
+
+`Breadth-First Search (BFS)` is a search algorithm that works by exploring the vertices of a graph in concentric rings until it finds what it is looking for. `BFS` explores vertices in a specific order, starting with the start vertex’s neighbors, then expanding the frontier to the second-degree neighbors, and so on. To do this we use a queue.
+
+![alt text](image-4.png)
+
+```python
+def bfs(self, start_vertex, target_vertex):
+    distance = {v: float('inf') for v in self._adj}
+    predecessor = {v: None for v in self._adj}
+    queue = Queue(self.vertex_count())
+    queue.enqueue(start_vertex)        ①
+    distance[start_vertex] = 0
+    while not queue.is_empty():
+        u = queue.dequeue()
+        if u == target_vertex:
+            return reconstruct_path(predecessor, target_vertex)
+        for (_, v) in self._get_vertex(u).outgoing_edges():
+            if distance[v] == float('inf'):
+                distance[v] = distance[u] + 1
+                predecessor[v] = u
+                queue.enqueue(v)
+    return None
+
+def reconstruct_path(pred, target):
+    path = []
+    while target:
+        path.append(target)
+        target = pred[target]
+    return path[::-1]
+```
+
+### Depth-First Search
+
+The opposite choice would be to go as deep into the graph as possible, and that’s what depth-first search (DFS) does. We must choose a start vertex s, and then the algorithm follows one path from s to its end. When the end of a path is reached, it goes back until it finds a vertex where we could have chosen a different edge and again follows that path to the end.
+
+![alt text](image-5.png)
+
+```python
+def dfs(self, start_vertex, color=None):
+    if color is None:
+        color = {v: 'white' for v in self._adj}
+    acyclic = True
+    stack = Stack()
+    stack.push((False, start_vertex))
+    while not stack.is_empty():
+        (mark_as_black, v) = stack.pop()
+        col = color.get(v, 'white')
+        if mark_as_black:
+            color[v] = 'black'
+        elif col == 'grey':
+            acyclic = False
+        elif col == 'white':
+            color[v] = 'grey'
+            stack.push((True, v))
+            for (_, w) in self._get_vertex(v).outgoing_edges():
+                stack.push((False, w))
+    return acyclic, color
+```
