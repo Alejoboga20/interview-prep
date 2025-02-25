@@ -45,3 +45,13 @@ Challenges - Practice
 ### Payed Courses
 
 - [CodeCrafters](https://codecrafters.io/)
+
+### Recommended Books
+
+- Advanced Algorithms and Data Structures (M. La Rocca, 2021, Manning)
+
+- Introduction to Algorithms (Cormen, Leiserson, Rivest, Stein, 2022, MIT Press)
+
+- Graph-Powered Machine Learning (A. Negro, 2021, Manning)
+
+- Graph Databases in Action (D. Bechberger, J. Perryman, 2020, Manning)
