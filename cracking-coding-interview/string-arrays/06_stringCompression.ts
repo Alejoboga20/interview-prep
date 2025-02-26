@@ -28,17 +28,34 @@ const stringCompression = (str: string): string => {
 
 		i += currentCounter;
 
-		if (currentCounter > 1) {
-			compressedString += `${currentElement}${currentCounter}`;
-			currentCounter = 1;
-		} else {
-			compressedString += `${currentElement}`;
-		}
+		compressedString += `${currentElement}${currentCounter}`;
+		currentCounter = 1;
 	}
-
-	console.log({ compressedString });
 
 	return compressedString.length >= strLength ? str : compressedString;
 };
 
+const stringCompressionOn = (str: string): string => {
+	let compressed = '';
+	let currentChar = str[0];
+	let counter = 0;
+
+	for (let index = 0; index < str.length; index++) {
+		const currentElement = str[index];
+
+		if (currentElement === currentChar) {
+			counter++;
+		} else {
+			compressed += currentChar + counter;
+			currentChar = currentElement;
+			counter = 1;
+		}
+	}
+	compressed += currentChar + counter;
+
+	return compressed.length < str.length ? compressed : str;
+};
+
 console.log(stringCompression('aabcccccaaa'));
+console.log(stringCompressionOn('aabcccccaaa'));
+console.log(stringCompressionOn('abcccccaaa'));
