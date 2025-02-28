@@ -8,7 +8,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 
 ## Table of Contents
 
-**Data Structures**
+**Grokking Data Structures**
 
 1. [Introduction](./grokking-data-structures/01-ds-introduction/README.md)
 2. [Static Arrays](./grokking-data-structures/02-static-arrays/README.md)
@@ -23,6 +23,10 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 11. [Binary Trees](./grokking-data-structures/11-binary-trees/README.md)
 12. [Dictionary and Hash Tables](./grokking-data-structures/12-dict-hash-tables/README.md)
 13. [Graphs](./grokking-data-structures/13-graphs/README.md)
+
+**Grokking Algorithms**
+
+1. [Introduction to Algorithms](./grokking-algorithms/01-introduction-to-algorithms/README.md)
 
 ## Extra Resources
 
