@@ -27,6 +27,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 **Grokking Algorithms**
 
 1. [Introduction to Algorithms](./grokking-algorithms/01-introduction-to-algorithms/README.md)
+2. [Selection Sort](./grokking-algorithms/02-selection-sort/README.md)
 
 ## Extra Resources
 
