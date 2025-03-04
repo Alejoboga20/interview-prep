@@ -16,12 +16,36 @@ export class ListNode<T> {
 	}
 }
 
+export class LinkedListIterator<T> {
+	private current: ListNode<T> | undefined;
+
+	constructor(head: ListNode<T> | undefined) {
+		this.current = head;
+	}
+
+	next(): IteratorResult<T> {
+		if (this.current) {
+			const value = this.current.value;
+			this.current = this.current.next;
+			return { value, done: false };
+		} else {
+			return { value: undefined as unknown as T, done: true };
+		}
+	}
+
+	[Symbol.iterator](): LinkedListIterator<T> {
+		return this;
+	}
+}
+
 export class SinglyLinkedList<T> {
 	head: ListNode<T> | undefined;
 	tail: ListNode<T> | undefined;
+	length: number;
 
 	constructor(head?: ListNode<T> | undefined) {
 		this.head = head;
+		this.length = 0;
 	}
 
 	public print(): void {
@@ -37,6 +61,7 @@ export class SinglyLinkedList<T> {
 	}
 
 	public push(value: T): void {
+		this.length += 1;
 		let current = this.head;
 		const newNode = new ListNode(value);
 
@@ -78,6 +103,7 @@ export class SinglyLinkedList<T> {
 
 		if (current.value === value) {
 			/* Deleting head */
+			this.length -= -1;
 			this.head = current.next;
 			return;
 		}
@@ -87,6 +113,7 @@ export class SinglyLinkedList<T> {
 
 		while (current) {
 			if (current.value === value) {
+				this.length -= -1;
 				prev.next = current.next;
 				return;
 			}
@@ -157,28 +184,3 @@ filteredList.print();
 /* Doubling list */
 const doubledList = list.map((value) => value * 2);
 doubledList.print();
-
-/* 
-export class LinkedList<T> {
-	head: Node<T> | undefined;
-	tail: Node<T> | undefined;
-
-	constructor(head?: Node<T>) {}
-
-	push(value: T) {}
-	filter() {}
-  map() {}
-	visit() {}
-	remove() {}
-	merge() {}
-	print() {}
-
-	// extra
-
-	//find(): Node<T> {}
-	//get(index: number): Node<T> {}
-	//iterator(): LinkedListIterator {}
-	length: number;
-}
-
-const list = new LinkedList(); */
