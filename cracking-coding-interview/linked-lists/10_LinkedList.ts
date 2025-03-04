@@ -16,29 +16,7 @@ export class ListNode<T> {
 	}
 }
 
-export class LinkedListIterator<T> {
-	private current: ListNode<T> | undefined;
-
-	constructor(head: ListNode<T> | undefined) {
-		this.current = head;
-	}
-
-	next(): IteratorResult<T> {
-		if (this.current) {
-			const value = this.current.value;
-			this.current = this.current.next;
-			return { value, done: false };
-		} else {
-			return { value: undefined as unknown as T, done: true };
-		}
-	}
-
-	[Symbol.iterator](): LinkedListIterator<T> {
-		return this;
-	}
-}
-
-export class SinglyLinkedList<T> {
+export class SinglyLinkedList<T> implements Iterable<T> {
 	head: ListNode<T> | undefined;
 	tail: ListNode<T> | undefined;
 	length: number;
@@ -46,6 +24,22 @@ export class SinglyLinkedList<T> {
 	constructor(head?: ListNode<T> | undefined) {
 		this.head = head;
 		this.length = 0;
+	}
+
+	[Symbol.iterator](): Iterator<T> {
+		let current = this.head;
+
+		return {
+			next(): IteratorResult<T> {
+				if (current) {
+					const value = current.value;
+					current = current.next;
+
+					return { value, done: false };
+				}
+				return { value: undefined as any, done: true };
+			},
+		};
 	}
 
 	public print(): void {
@@ -177,6 +171,12 @@ list.print();
 /* Removing value */
 list.removeValue(3);
 list.print();
+
+/* Iterator */
+for (const value of list) {
+	console.log(value);
+}
+
 list.visit((value) => console.log(`List Node Value: ${value}`));
 /* Fitler odds */
 const filteredList = list.filter((value) => value % 2 === 0);
