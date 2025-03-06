@@ -5,7 +5,7 @@
 //
 // 1 -> 2 -> 2-> 2 -> 4
 
-import { SinglyLinkedList, ListNode } from './10_LinkedList';
+import { SinglyLinkedList } from './10_LinkedList';
 
 const linkedList = new SinglyLinkedList<number>();
 linkedList.push(1);
@@ -45,3 +45,27 @@ export default function removeDups<T>(
 linkedList.print();
 const listWithoutDups = removeDups(linkedList);
 listWithoutDups.print();
+
+export const alternativeRemoveDups = <T>(
+	list: SinglyLinkedList<T>
+): SinglyLinkedList<T> => {
+	const set: Set<T> = new Set();
+
+	const filteredList = list.filter((listNode) => {
+		if (set.has(listNode)) {
+			return false;
+		}
+		set.add(listNode);
+		return true;
+	});
+
+	return filteredList;
+};
+
+linkedList.push(1);
+linkedList.push(5);
+linkedList.push(1);
+linkedList.push(4);
+linkedList.print();
+const filteredList = alternativeRemoveDups(linkedList);
+filteredList.print();
