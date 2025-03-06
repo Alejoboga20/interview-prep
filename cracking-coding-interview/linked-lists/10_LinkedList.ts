@@ -116,12 +116,14 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 		}
 	}
 
-	public visit(callback: (value: T) => void): void {
+	public visit(fn: (listNode: ListNode<T>, index: number) => void): void {
 		let current = this.head;
+		let index = 0;
 
 		while (current) {
-			callback(current.value);
+			fn(current, index);
 			current = current.next;
+			index++;
 		}
 	}
 
