@@ -63,6 +63,8 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 		let current = this.head;
 		const newNode = new ListNode(value);
 
+		this.tail = newNode;
+
 		if (!current) {
 			this.head = newNode;
 			return;
@@ -113,6 +115,11 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 			if (current.value === value) {
 				this.length -= -1;
 				prev.next = current.next;
+
+				if (!current.next) {
+					this.tail = prev;
+				}
+
 				return;
 			}
 			prev = current;
@@ -131,13 +138,15 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 		}
 	}
 
-	public filter(predicate: (value: T) => boolean): SinglyLinkedList<T> {
+	public filter(
+		predicate: (listNode: ListNode<T>) => boolean
+	): SinglyLinkedList<T> {
 		/* Time Complexity O(n) */
 		const newList = new SinglyLinkedList<T>();
 		let current = this.head;
 
 		while (current) {
-			const isPassingCondition = predicate(current.value);
+			const isPassingCondition = predicate(current);
 
 			if (isPassingCondition) {
 				newList.push(current.value);
@@ -161,6 +170,15 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 		}
 
 		return newList;
+	}
+
+	public merge(list: SinglyLinkedList<T>): SinglyLinkedList<T> {
+		if (!this.tail) return list;
+
+		this.tail.next = list.head;
+		this.tail = list.tail;
+
+		return this;
 	}
 }
 
