@@ -47,6 +47,8 @@ export default function sumLists(
 }
 const firstList = new SinglyLinkedList<number>();
 firstList.push(7);
+firstList.push(1);
+firstList.push(6);
 firstList.print();
 
 const secondList = new SinglyLinkedList<number>();
@@ -57,3 +59,29 @@ secondList.print();
 
 const sumList = sumLists(firstList, secondList);
 sumList.print();
+
+export const sumListWithAccumulator = (
+	firstList: SinglyLinkedList<number>,
+	secondList: SinglyLinkedList<number>
+): SinglyLinkedList<number> => {
+	const sumList = new SinglyLinkedList<number>();
+	const firstArr: number[] = [];
+	firstList.visit((listNode) => firstArr.unshift(listNode.value));
+	const firstNumber = Number(firstArr.join(''));
+
+	const seccondArray: number[] = [];
+	secondList.visit((listNode) => seccondArray.unshift(listNode.value));
+	const secondNumber = Number(seccondArray.join(''));
+
+	const sumNumber = (firstNumber + secondNumber)
+		.toString()
+		.split('')
+		.map((digit) => Number(digit))
+		.reverse()
+		.forEach((digit) => sumList.push(digit));
+
+	return sumList;
+};
+
+const sumListWithAcc = sumListWithAccumulator(firstList, secondList);
+sumListWithAcc.print();
