@@ -42,6 +42,10 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 		};
 	}
 
+	public getLength(): number {
+		return this.length;
+	}
+
 	public print(): void {
 		let current = this.head;
 		let accumulator: T[] = [];
@@ -160,29 +164,29 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 	}
 }
 
-const list = new SinglyLinkedList<number>();
-/* Create list */
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-list.push(5);
-list.push(6);
-list.print();
+// const list = new SinglyLinkedList<number>();
+// /* Create list */
+// list.push(1);
+// list.push(2);
+// list.push(3);
+// list.push(4);
+// list.push(5);
+// list.push(6);
+// list.print();
 
-/* Removing value */
-list.removeValue(3);
-list.print();
+// /* Removing value */
+// list.removeValue(3);
+// list.print();
 
 /* Iterator */
-for (const value of list) {
-	console.log(value);
-}
+// for (const value of list) {
+// 	console.log(value);
+// }
 
-list.visit((value) => console.log(`List Node Value: ${value}`));
-/* Fitler odds */
-const filteredList = list.filter((value) => value % 2 === 0);
-filteredList.print();
-/* Doubling list */
-const doubledList = list.map((value) => value * 2);
-doubledList.print();
+// list.visit((value) => console.log(`List Node Value: ${value}`));
+// /* Fitler odds */
+// const filteredList = list.filter((value) => value % 2 === 0);
+// filteredList.print();
+// /* Doubling list */
+// const doubledList = list.map((value) => value * 2);
+// doubledList.print();
