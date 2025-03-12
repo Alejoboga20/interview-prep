@@ -127,12 +127,16 @@ export class SinglyLinkedList<T> implements Iterable<T> {
 		}
 	}
 
-	public visit(fn: (listNode: ListNode<T>, index: number) => void): void {
+	public visit(
+		fn: (listNode: ListNode<T>, index: number) => boolean | void
+	): void {
 		let current = this.head;
 		let index = 0;
 
 		while (current) {
-			fn(current, index);
+			if (fn(current, index)) {
+				break;
+			}
 			current = current.next;
 			index++;
 		}

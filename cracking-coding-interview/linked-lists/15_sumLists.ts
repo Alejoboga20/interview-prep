@@ -66,11 +66,15 @@ export const sumListWithAccumulator = (
 ): SinglyLinkedList<number> => {
 	const sumList = new SinglyLinkedList<number>();
 	const firstArr: number[] = [];
-	firstList.visit((listNode) => firstArr.unshift(listNode.value));
+	firstList.visit((listNode) => {
+		firstArr.unshift(listNode.value);
+	});
 	const firstNumber = Number(firstArr.join(''));
 
 	const seccondArray: number[] = [];
-	secondList.visit((listNode) => seccondArray.unshift(listNode.value));
+	secondList.visit((listNode) => {
+		seccondArray.unshift(listNode.value);
+	});
 	const secondNumber = Number(seccondArray.join(''));
 
 	const sumNumber = (firstNumber + secondNumber)

@@ -7,7 +7,9 @@ import { SinglyLinkedList, ListNode } from './10_LinkedList';
 export default function isPalindrome<T>(list: SinglyLinkedList<T>): boolean {
 	let word = '';
 
-	list.visit((listNode) => (word += listNode.value));
+	list.visit((listNode) => {
+		word += listNode.value;
+	});
 
 	for (let index = 0; index < word.length / 2; index++) {
 		if (word[index] !== word[word.length - 1 - index]) {

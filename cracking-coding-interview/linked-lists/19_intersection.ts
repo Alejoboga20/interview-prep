@@ -13,7 +13,9 @@ export default function intersection<T>(
 	let intersectionNode: ListNode<T> | undefined = undefined;
 	const set = new Set<ListNode<T>>();
 
-	list1.visit((listNode) => set.add(listNode));
+	list1.visit((listNode) => {
+		set.add(listNode);
+	});
 
 	list2.visit((listNode) => {
 		if (set.has(listNode) && !intersectionNode) {

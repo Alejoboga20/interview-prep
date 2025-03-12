@@ -23,8 +23,12 @@ export default function sumListsForwardOrder(
 	const firstArr: number[] = [];
 	const secondArr: number[] = [];
 
-	firstList.visit((listNode) => firstArr.push(listNode.value));
-	secondList.visit((listNode) => secondArr.push(listNode.value));
+	firstList.visit((listNode) => {
+		firstArr.push(listNode.value);
+	});
+	secondList.visit((listNode) => {
+		secondArr.push(listNode.value);
+	});
 
 	const firstNumber = Number(firstArr.join(''));
 	const secondNumber = Number(secondArr.join(''));
