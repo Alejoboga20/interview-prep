@@ -37,3 +37,14 @@ Example Questions:
 8. Which DS is better for random access? Answer: An array.
 9. Which DS is better in terms of memory? Answer: A linked list but each item occupies more memory because of the pointers.
 10. If we have to implement a queue for a restaurant, which DS should we use? Answer: A linked list.
+
+## Selection Sort
+
+To implement `selection sort`, you search for the smallest item and move it to the first position. Then you search for the smallest item remaining and move it to the second position. You keep doing this until you’ve moved all the items to their correct positions.
+We don't need to sort the elements from the smallest to the largest. We can also sort them from the largest to the smallest or we can sort them in any other way.
+
+![alt text](image-3.png)
+
+Time Complexity: O(n^2)
+
+Selection sort implementation here: [selectionSort.ts](./selectionSort.ts)
