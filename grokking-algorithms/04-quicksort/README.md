@@ -58,3 +58,11 @@ Now you have:
 You can now combine the sub-arrays and the pivot.
 
 TypeScript implementation here: [quicksort.ts](quicksort.ts)
+
+## Big O
+
+Quicksort is unique because its speed depends on the pivot you choose.
+
+![alt text](image-1.png)
+
+There’s another sorting algorithm called merge sort, which is O(n log n). Much faster! Quicksort is a tricky case. In the worst case, quicksort takes O(n2) time. It’s as slow as selection sort! But that’s the worst case. In the average case, quicksort takes O(n log n) time
