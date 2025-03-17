@@ -65,4 +65,4 @@ Quicksort is unique because its speed depends on the pivot you choose.
 
 ![alt text](image-1.png)
 
-There’s another sorting algorithm called merge sort, which is O(n log n). Much faster! Quicksort is a tricky case. In the worst case, quicksort takes O(n2) time. It’s as slow as selection sort! But that’s the worst case. In the average case, quicksort takes O(n log n) time
+There’s another sorting algorithm called merge sort, which is O(n log n). Much faster! Quicksort is a tricky case. In the worst case, quicksort takes O(n2) time. It’s as slow as selection sort! But that’s the worst case. In the average case, quicksort takes O(n log n) time. If you always choose a random element in the array as the pivot, quicksort will complete in O(n log n) time on average. (There’s one exception: if all the elements in your array are the same, you will always hit the worst-case run time without some additional logic.)
