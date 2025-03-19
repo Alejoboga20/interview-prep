@@ -11,8 +11,9 @@ You won’t be asked solely about what data structures exist, you need to be abl
 Well-known algorithms and data structures (not necessarily be prepared to implement, but be familiar with when/how to use them, their pros and cons, time/space complexity, and so forth):
 
 - Sorting
-- Merge
-- Quick
+  - Selection
+  - Merge
+  - Quick
 - Heap
 - Linked lists
 - Binary search
