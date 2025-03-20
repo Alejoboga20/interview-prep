@@ -20,7 +20,7 @@ A `graph` models a set of connections. It consists of a set of nodes and a set o
 1. Is there a path from node A to node B?
 2. What is the shortest path from node A to node B?
 
-**We need to keep the order of the nodes to explore in a queue.**
+**You need to check people in the order they were added to the search list, so the search list needs to be a queue. Otherwise, you won’t get the shortest path.**
 
 To implement the algorithm `bfs`, you need to follow these steps:
 
@@ -71,6 +71,14 @@ def search(name):
 search("you")
 ```
 
+**Once you check someone, make sure you don’t check them again. Otherwise, you might end up in an infinite loop**
+
 ![alt text](image-4.png)
 
 Check TypeScript implementation here: [Breadth First Search](./breadthFirstSearch.ts)
+
+## Time Complexity
+
+The time complexity of the `Breadth First Search` algorithm is `O(V + E)`, where `V` is the number of vertices and `E` is the number of edges in the graph.
+
+**If you have a problem like “find the shortest X,” try modeling your problem as a graph and use breadth-first search to solve it.**
