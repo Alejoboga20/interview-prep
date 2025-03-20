@@ -9,24 +9,24 @@ const graph: { [key: string]: string[] } = {
 	jonny: [],
 };
 
-const queue: string[] = [];
-
 export const breadthFirstSearch = (initialNode: string) => {
-	const connections = graph[initialNode];
-	const initialQueue = queue.concat(connections);
+	const initialConnections = graph[initialNode];
+	const queue = [...initialConnections];
 	const visitedNodes = new Set();
+	let steps = 0;
 
-	while (initialQueue.length > 0) {
-		const currentNode = initialQueue.shift()!;
+	while (queue.length > 0) {
+		steps++;
+		const currentNode = queue.shift()!;
 
 		if (!visitedNodes.has(currentNode)) {
 			if (currentNode === 'jonny') {
-				console.log('Found Jonny!');
+				console.log('Found Jonny! - Steps:', steps);
 				return;
 			} else {
 				visitedNodes.add(currentNode);
 				const connections = graph[currentNode];
-				initialQueue.concat(connections);
+				queue.push(...connections);
 			}
 		}
 	}
