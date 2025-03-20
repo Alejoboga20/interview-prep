@@ -31,6 +31,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 3. [Recursion](./grokking-algorithms/03-recursion/README.md)
 4. [Quicksort](./grokking-algorithms/04-quicksort/README.md)
 5. [Hash Tables](./grokking-algorithms/05-hash-tables/README.md)
+6. [Breadth-First Search](./grokking-algorithms/06-breadth-first-search/README.md)
 
 ## Extra Resources
 
