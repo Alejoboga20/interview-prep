@@ -72,3 +72,5 @@ search("you")
 ```
 
 ![alt text](image-4.png)
+
+Check TypeScript implementation here: [Breadth First Search](./breadthFirstSearch.ts)
