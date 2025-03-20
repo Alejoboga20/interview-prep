@@ -30,3 +30,16 @@ print(book["avocado"]) # 1.49
 ```
 
 ## Collisions
+
+It's almost impossible to write a hash function that generates unique hash values for all inputs. When two different inputs produce the same hash value, it's called a `collision` (two keys assigned to the same index).
+
+There are two common ways to handle collisions:
+
+- `Chaining`: Each slot in the hash table stores a linked list of key-value pairs or an array of key-value pairs.
+- `Open Addressing`: When a collision occurs, the program searches for the next open slot in the hash table.
+
+![alt text](image-4.png)
+
+The `hash function` is the most important part of a hash table. It needs to be fast and distribute keys uniformly across the hash table. Otherwise you could end up producing clusters of keys that slow down the hash table.
+
+![alt text](image-5.png)
