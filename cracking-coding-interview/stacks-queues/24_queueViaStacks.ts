@@ -16,29 +16,23 @@ export default class MyQueue<T> {
 	}
 
 	dequeue(): T | undefined {
-		if (MyQueue.isEmpty(this.entryStack)) {
+		if (this.isEmpty()) {
 			throw new Error('empty queue');
 		}
 
-		while (!MyQueue.isEmpty(this.entryStack)) {
-			const topElement = this.entryStack.pop();
-			this.auxStack.push(topElement!);
+		if (this.auxStack.length === 0) {
+			while (this.entryStack.length > 0) {
+				this.auxStack.push(this.entryStack.pop()!);
+			}
 		}
 
-		const bottomElement = this.auxStack.pop();
-
-		while (!MyQueue.isEmpty(this.auxStack)) {
-			const topElement = this.auxStack.pop();
-			this.entryStack.push(topElement!);
-		}
-
-		return bottomElement;
+		return this.auxStack.pop();
 	}
 
 	/* peek(): T | undefined {} */
 
-	static isEmpty(stack: any[]): boolean {
-		const isEmpty = stack.length === 0;
+	isEmpty(): boolean {
+		const isEmpty = this.entryStack.length === 0 && this.auxStack.length === 0;
 
 		return isEmpty;
 	}
