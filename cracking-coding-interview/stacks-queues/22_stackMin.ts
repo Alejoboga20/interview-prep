@@ -5,33 +5,44 @@
 //
 
 export default class StackMin<T> {
-	private array: Array<T | undefined>;
-	private minElement: T | undefined;
+	private array: T[] = [];
+	private minArray: T[] = [];
 
 	constructor() {
 		this.array = [];
+		this.minArray = [];
 	}
 
 	push(value: T): void {
-		if (
-			typeof value === 'number' &&
-			typeof this.minElement === 'number' &&
-			value < this.minElement
-		) {
-			this.minElement = value;
-		}
-		if (this.array.length === 0) {
-			this.minElement = value;
-		}
 		this.array.push(value);
+
+		if (this.minArray.length === 0) {
+			this.minArray.push(value);
+			return;
+		}
+		const currentMinElement = this.minArray[this.minArray.length - 1];
+
+		if (
+			typeof currentMinElement === 'number' &&
+			typeof value === 'number' &&
+			value <= currentMinElement
+		) {
+			this.minArray.push(value);
+		}
 	}
 
 	pop(): T | undefined {
-		return this.array.pop();
+		const popped = this.array.pop();
+		const currentMinElement = this.minArray[this.minArray.length - 1];
+
+		if (popped === currentMinElement) {
+			this.minArray.pop();
+		}
+		return popped;
 	}
 
 	min(): T | undefined {
-		return this.minElement;
+		return this.minArray[this.minArray.length - 1];
 	}
 }
 
@@ -45,4 +56,8 @@ console.log(stackMin.min());
 stackMin.push(0);
 console.log(stackMin.min());
 stackMin.push(7);
+console.log(stackMin.min());
+stackMin.pop();
+stackMin.pop();
+stackMin.pop();
 console.log(stackMin.min());
