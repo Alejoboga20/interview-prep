@@ -29,7 +29,20 @@ export default class MyQueue<T> {
 		return this.auxStack.pop();
 	}
 
-	/* peek(): T | undefined {} */
+	peek(): T | undefined {
+		if (this.isEmpty()) {
+			throw new Error('empty queue');
+		}
+
+		if (this.auxStack.length === 0) {
+			while (this.entryStack.length > 0) {
+				this.auxStack.push(this.entryStack.pop()!);
+			}
+		}
+
+		const bottomElement = this.auxStack[this.auxStack.length - 1];
+		return bottomElement;
+	}
 
 	isEmpty(): boolean {
 		const isEmpty = this.entryStack.length === 0 && this.auxStack.length === 0;
