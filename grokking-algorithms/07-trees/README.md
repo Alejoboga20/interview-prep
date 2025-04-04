@@ -7,6 +7,8 @@ Trees are a subset of graphs. Trees are made of `nodes` and `edges`. Each node c
 
 A file directory is a tree that all of us interact with every day.
 
+`Breadth First Search (BFS)` is a way to traverse a tree or graph. It starts at the root and explores all the neighbors at the present depth before moving on to nodes at the next depth level. BFS uses a queue to keep track of nodes that need to be explored.
+
 ```python
 from os import listdir
 from os.path import isfile, join
@@ -28,3 +30,26 @@ printnames("pics")
 ```
 
 **Trees don't have cycles.** A tree is a special kind of graph that doesn't have cycles. This means that there is only one path between any two nodes in a tree. In other words, if you start at the root and follow the edges, you will never come back to the same node.
+
+`Depth First Search (DFS)` is another way to traverse a tree or graph. It starts at the root and explores as far as possible along each branch before backtracking. DFS uses a stack to keep track of nodes that need to be explored.
+
+```python
+from os import listdir
+from os.path import isfile, join
+
+def printnames(dir):
+    for file in sorted(listdir(dir)):  ①
+        fullpath = join(dir, file)
+        if isfile(fullpath):
+            print(file)                ②
+        else:
+            printnames(fullpath)       ③
+
+printnames("pics")
+```
+
+A tree is a connected, acyclic graph.
+
+![alt text](image-2.png)
+
+## Binary Trees
