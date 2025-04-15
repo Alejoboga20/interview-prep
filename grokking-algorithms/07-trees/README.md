@@ -53,3 +53,7 @@ A tree is a connected, acyclic graph.
 ![alt text](image-2.png)
 
 ## Binary Trees
+
+A `binary tree` is a special type of tree where nodes can have at most two children. The left child is less than the parent, and the right child is greater than the parent. This property makes binary trees useful for searching and sorting data. (An ancestry tree is an example of a binary tree since everyone has two biological parents)
+
+![alt text](image-3.png)
