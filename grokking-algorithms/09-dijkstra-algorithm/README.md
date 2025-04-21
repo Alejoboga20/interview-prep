@@ -23,3 +23,7 @@ Step 3: Repeat.
 Step 4: Calculate the shortest path from A to B by following the nodes with the lowest weights.
 
 ![alt text](image-3.png)
+
+To calculate the shortest path in an unweighted graph, use breadth-first search. To calculate the shortest path in a weighted graph, use Dijkstra’s algorithm
+
+**_Dijkstra’s algorithm only works on weighted graphs with no cycles, where all the edges are nonnegative. Negative-weight edges break the algorithm._**
