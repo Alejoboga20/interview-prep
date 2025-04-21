@@ -17,3 +17,15 @@ Based on this property we can perform a binary search by eliminating half of the
 ![alt text](image-2.png)
 
 To get a short tree, we need to balance it.
+
+## AVL Trees: A type of balanced tree
+
+AVL trees are a type of self-balancing binary search tree. An AVL tree will give us that O(log n) height we want by balancing itself through `rotations`.
+
+![alt text](image-3.png)
+
+For the tree to know when it’s time to balance itself, it needs to store some extra information. Each node stores one of two pieces of information: its height or something called a balance factor. The balance factor can be −1, 0, or 1.
+
+![alt text](image-4.png)
+
+After an insert, you update the balance factors for that node’s ancestors. AVL trees require, at most, one rebalancing.
