@@ -35,6 +35,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 7. [Trees](./grokking-algorithms/07-trees/README.md)
 8. [Balanced Trees](./grokking-algorithms/08-balanced-trees/README.md)
 9. [Dijkstra's Algorithm](./grokking-algorithms/09-dijkstra-algorithm/README.md)
+10. [Greedy Algorithms](./grokking-algorithms/10-greedy-algo/README.md)
 
 ## Extra Resources
 
