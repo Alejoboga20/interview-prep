@@ -64,3 +64,13 @@ In O notation, O(F(n)) is really a set of functions that includes all functions 
 Most common growth rates are:
 
 ![alt text](image-3.png)
+
+## Amortized Analysis
+
+In the `amortized analysis` of an algorithm, we average the time required to execute a sequence of operations with all the operations of the algorithm. In amortized analysis, we analyze algorithms considering both the costly and less costly operations in order to analyze all the sequences of operations.
+
+Methods for amortized analysis:
+
+- Aggregate method: In aggregate analysis, the amortized cost is the average cost of all the sequences of operations.
+- Accounting method: In the accounting method, we assign an amortized cost to each operation, which may be different than their actual cost. In this, we impose an extra charge on early operations in the sequence and save “credit cost,” which is used to pay expensive operations later in the sequence.
+- Potential method: The potential method is like the accounting method. We determine the amortized cost of each operation and impose an extra charge to early operations that may be used later in the sequence. Unlike the accounting method, the potential method accumulates the overcharged credit as “potential energy” of the data structure as a whole instead of storing credit for individual operations.
