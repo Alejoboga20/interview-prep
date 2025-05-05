@@ -28,3 +28,13 @@ The `average-case running time` is the average running time required for an algo
 **_ In most real-world applications, worst-case analysis is mostly used, since it gives a guarantee that the running time will not take any longer than the worst-case running time of the algorithm for any input value._**
 
 `Best-case running time` is the minimum time needed for an algorithm to run; it is the lower bound on the running time required for an algorithm.
+
+### Space Complexity
+
+The space complexity of the algorithm estimates the memory requirement to execute it on a computer to produce the output as a function of input data.
+
+Example: Squares. [Code here](./squares.py). It needs to store the squares of the first `n` numbers in a list. The space complexity of this algorithm is `O(n)`.
+
+The space complexity of an algorithm is the total space required by the algorithm to execute, including the space required for the input values, auxiliary space, and output values. The space complexity of an algorithm is expressed in terms of `Big O` notation.
+
+Given two algorithms to solve a given problem, with all other requirements being equal, then the algorithm that requires less memory can be considered more efficient
