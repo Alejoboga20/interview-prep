@@ -61,3 +61,36 @@ print(a and b) # False
 print(a or b) # True
 print(not a) # False
 ```
+
+## Complex Data Types
+
+### Dictionaries
+
+Dictionaries are used to store data values in `key:value pairs`. A dictionary is a collection which is unordered, changeable and does not allow duplicates. Dictionaries are written with curly brackets, and they have keys and values. The `key` must be of a hashable and immutable data type. The values can be of any data type. In this context, an object is hashable if it has a hash value that does not change during its lifetime in the program
+
+```python
+dict = {
+    <key>: <value>,
+    <key>: <value>,
+      .
+      .
+      .
+    <key>: <value>
+}
+```
+
+![alt text](image.png)
+
+## Sets
+
+A `set` is an unordered collection of hashable objects. It is iterable, mutable, and has unique elements. Sets support membership testing operators (in, not in), and operations such as intersection, union, difference, and symmetric difference.
+
+```python
+x1 = set(['and', 'python', 'data', 'structure'])
+print(x1)
+print(type(x1))
+x2 = {'and', 'python', 'data', 'structure'}
+print(x2)
+```
+
+![alt text](image-1.png)
