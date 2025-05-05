@@ -38,3 +38,29 @@ Example: Squares. [Code here](./squares.py). It needs to store the squares of th
 The space complexity of an algorithm is the total space required by the algorithm to execute, including the space required for the input values, auxiliary space, and output values. The space complexity of an algorithm is expressed in terms of `Big O` notation.
 
 Given two algorithms to solve a given problem, with all other requirements being equal, then the algorithm that requires less memory can be considered more efficient
+
+## Asymptotic Notation
+
+To analyze the time complexity of an algorithm, the rate of growth (order of growth) is very important when the input size is large. When the input size becomes large, we only consider the higher-order terms and ignore the insignificant terms. In asymptotic analysis, we analyze the efficiency of algorithms for large input sizes considering the higher order of growth and ignoring the multiplicative constants and lower-order terms.
+
+### Theta Notation
+
+It denotes the worst-case running time complexity with a tight bound. For a given function F(n), the asymptotic worst-case running time complexity can be defined as follows:
+
+`T(n) = Θ(F(n))` iff there exists constants n0, c1, and c2 such that: `0 ≤ c1 * F(n) ≤ T(n) ≤ c2 * F(n)` for all n ≥ n0.
+
+![alt text](image-1.png)
+
+### Big O Notation
+
+It denotes the upper bound of the running time complexity. For a given function F(n), the asymptotic upper bound running time complexity can be defined as follows:
+
+`T(n) = O(F(n))` iff there exists constants n0 and c such that: `0 ≤ T(n) ≤ c * F(n)` for all n ≥ n0.
+
+![alt text](image-2.png)
+
+In O notation, O(F(n)) is really a set of functions that includes all functions with the same or smaller rates of growth than F(n)
+
+Most common growth rates are:
+
+![alt text](image-3.png)
