@@ -38,6 +38,10 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 10. [Greedy Algorithms](./grokking-algorithms/10-greedy-algo/README.md)
 11. [Dynamic Programming](./grokking-algorithms/11-dynamic-programming/README.md)
 
+**Hands-On Data Structures and Algorithms**
+
+1. [Python Data Types and Structures](./hands-on-ds-algo/01-python-dt/README.md)
+
 ## Extra Resources
 
 ### Articles
