@@ -8,3 +8,12 @@ Algorithm design techniques are strategies or methods used to develop algorithms
 4. **Dynamic Programming**: This technique is used for optimization problems where the solution can be constructed from solutions to smaller subproblems. It stores the results of subproblems to avoid redundant calculations.
 5. **Backtracking**: This technique is used for constraint satisfaction problems. It builds a solution incrementally and abandons a solution as soon as it determines that it cannot be extended to a valid solution.
 6. **Recursion**: This technique involves solving a problem by solving smaller instances of the same problem. It is often used in conjunction with other techniques like divide and conquer or dynamic programming.
+
+# Recursion
+
+A recursive algorithm calls itself repeatedly in order to solve the problem until a certain condition is fulfilled. A `recursive function` should have two types of cases:
+
+- **Base Case**: The simplest instance of the problem, which can be solved directly without further recursion. Recursion will be stopped once the base case is met.
+- **Recursive Case**: The part of the function that breaks the problem down into smaller subproblems and calls itself to solve those subproblems.
+
+Example: [Factorial Calculation](./factorial.py)
