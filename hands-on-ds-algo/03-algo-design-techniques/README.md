@@ -17,3 +17,20 @@ A recursive algorithm calls itself repeatedly in order to solve the problem unti
 - **Recursive Case**: The part of the function that breaks the problem down into smaller subproblems and calls itself to solve those subproblems.
 
 Example: [Factorial Calculation](./factorial.py)
+
+# Divide and Conquer
+
+The `divide-and-conquer` paradigm divides a problem into smaller sub-problems, and then solves these; finally, it combines the results to obtain a global, optimal solution. Some examples of divide-and-conquer algorithms include:
+
+- Binary search
+- Merge sort
+- Quick sort
+- Algorithm for fast multiplication
+- Strassen’s matrix multiplication
+- Closest pair of points
+
+## Binary Search
+
+The binary search algorithm is based on the divide-and-conquer design technique. This algorithm is used to find a given element from a sorted list of elements. It first compares the search element with the middle element of the list; if the search element is smaller than the middle element, then the half of the list of elements greater than the middle element is discarded; the process repeats recursively until the search element is found or we reach the end of the list
+
+![alt text](image.png)
