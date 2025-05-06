@@ -25,4 +25,4 @@ def binary_search(ordered_list: list[int], target: int) -> int:
 oreder_list = [4, 6, 9, 13, 14, 18, 21, 24, 38]
 target = 13
 
-binary_search(ordered_list=oreder_list, target=target)
+print(binary_search(ordered_list=oreder_list, target=target))

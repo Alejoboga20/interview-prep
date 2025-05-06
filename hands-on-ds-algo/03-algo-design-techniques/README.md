@@ -34,3 +34,5 @@ The `divide-and-conquer` paradigm divides a problem into smaller sub-problems, a
 The binary search algorithm is based on the divide-and-conquer design technique. This algorithm is used to find a given element from a sorted list of elements. It first compares the search element with the middle element of the list; if the search element is smaller than the middle element, then the half of the list of elements greater than the middle element is discarded; the process repeats recursively until the search element is found or we reach the end of the list
 
 ![alt text](image.png)
+
+The worst-case time complexity of the binary search algorithm is `O(log n)`.
