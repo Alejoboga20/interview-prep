@@ -36,3 +36,9 @@ The binary search algorithm is based on the divide-and-conquer design technique.
 ![alt text](image.png)
 
 The worst-case time complexity of the binary search algorithm is `O(log n)`.
+
+## Merge Sort
+
+Merge sort is an algorithm for sorting a list of n natural numbers in increasing order. Firstly, the given list of elements is divided iteratively into equal parts until each sublist contains one element, and then these sublist are combined to create a new list in a sorted order. The merge sort algorithm is based on the divide-and-conquer design technique. The worst-case time complexity of the merge sort algorithm is `O(n log n)`.
+
+Code here: [Merge Sort](./merge_sort.py)

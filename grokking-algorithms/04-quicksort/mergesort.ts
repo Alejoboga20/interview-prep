@@ -30,6 +30,15 @@ const merge = (left: number[], right: number[]): number[] => {
 		}
 	}
 
+	while (leftIndex < left.length) {
+		sortedArray.push(left[leftIndex]);
+		leftIndex++;
+	}
+	while (rightIndex < right.length) {
+		sortedArray.push(right[rightIndex]);
+		rightIndex++;
+	}
+
 	return sortedArray
 		.concat(left.slice(leftIndex))
 		.concat(right.slice(rightIndex));
