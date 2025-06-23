@@ -43,6 +43,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 1. [Python Data Types and Structures](./hands-on-ds-algo/01-python-dt/README.md)
 2. [Introduction to Algorithm Design](./hands-on-ds-algo/02-intro-algo-design/README.md)
 3. [Algorithm Design Techniques](./hands-on-ds-algo/03-algo-design-techniques/README.md)
+4. [Arrays and Linked Lists](./hands-on-ds-algo/04-arrays-linked-lists/README.md)
 
 ## Extra Resources
 
