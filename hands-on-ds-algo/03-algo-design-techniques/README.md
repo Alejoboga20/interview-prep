@@ -42,3 +42,42 @@ The worst-case time complexity of the binary search algorithm is `O(log n)`.
 Merge sort is an algorithm for sorting a list of n natural numbers in increasing order. Firstly, the given list of elements is divided iteratively into equal parts until each sublist contains one element, and then these sublist are combined to create a new list in a sorted order. The merge sort algorithm is based on the divide-and-conquer design technique. The worst-case time complexity of the merge sort algorithm is `O(n log n)`.
 
 Code here: [Merge Sort](./merge_sort.py)
+
+## Dynamic Programming
+
+Dynamic programming is a method for solving complex problems by breaking them down into simpler subproblems. It is applicable when the problem can be divided into overlapping subproblems that can be solved independently. Dynamic programming uses memoization or tabulation to store the results of subproblems to avoid redundant calculations.
+One property that makes a problem an ideal candidate for being solved with dynamic programming is that it has an `overlapping set of sub-problems`.
+
+```python
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+for i in range(5):
+    print(fibonacci(i))
+```
+
+We have overlapping subproblems in the above code, as the same Fibonacci numbers are calculated multiple times. This can be optimized using dynamic programming.
+
+![alt text](image-1.png)
+
+```python
+memo = {}
+
+def fibonacci(n):
+  if memo.get(n, None) is not None:
+    return memo[n]
+  if n == 1:
+    return 1
+  if n == 0:
+    return 0
+
+  memo[n] = fibonacci(n - 1) + fibonacci(n - 2)
+
+  return memo[n]
+```
+
+```
+
+```
