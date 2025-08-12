@@ -31,6 +31,28 @@ export class FixedSizeArray<T> {
 
 		this.data[index] = value;
 	}
+
+	getLength(): number {
+		const length = this.size;
+
+		return length;
+	}
+
+	toArray(): T[] {
+		return [...this.data];
+	}
+
+	fill(value: T): void {
+		for (let index = 0; index < this.size; index++) {
+			this.data[index] = value;
+		}
+	}
+
+	clear(): void {
+		for (let index = 0; index < this.size; index++) {
+			this.data[index] = undefined as unknown as T;
+		}
+	}
 }
 
 const array = new FixedSizeArray(5, { value: 'hello' });
