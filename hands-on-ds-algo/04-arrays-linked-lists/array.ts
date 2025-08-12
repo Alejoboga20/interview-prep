@@ -53,6 +53,31 @@ export class FixedSizeArray<T> {
 			this.data[index] = undefined as unknown as T;
 		}
 	}
-}
 
-const array = new FixedSizeArray(5, { value: 'hello' });
+	/* Makes the class iterable */
+	*[Symbol.iterator](): Iterator<T> {
+		for (const item of this.data) {
+			yield item;
+		}
+	}
+
+	forEach(callbackFn: (element: T, index: number) => void) {
+		for (let i = 0; i < this.size; i++) {
+			callbackFn(this.data[i], i);
+		}
+	}
+
+	map<U>(callbackFn: (element: T, index: number) => U): FixedSizeArray<U> {
+		const result = new FixedSizeArray<U>(
+			this.size,
+			callbackFn(this.data[0], 0)
+		);
+
+		for (let i = 0; i < this.size; i++) {
+			const newElement = callbackFn(this.data[i], i);
+			result.set(i, newElement);
+		}
+
+		return result;
+	}
+}
