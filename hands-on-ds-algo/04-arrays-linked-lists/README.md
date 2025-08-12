@@ -16,3 +16,12 @@ In an array, elements can be acccesed randomly using their index. The index of t
 In a `linked list`, each element is a separate object, called a `node`, that contains a value and a reference (or link) to the next node in the sequence. This allows for efficient insertion and deletion of elements, as nodes can be easily added or removed without needing to shift other elements. The last element in a linked list points to `None`, indicating the end of the list. Contrary to arrays, linked lists store data items sequentially in different locations in memory, wherein each data item is stored separately and linked to other data items using pointers
 
 ![alt text](image-1.png)
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+```
+
+## Singly Linked List
