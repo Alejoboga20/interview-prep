@@ -25,3 +25,20 @@ class Node:
 ```
 
 ## Singly Linked List
+
+A `singly linked list` contains a number of nodes in which each node contains data and a pointer that links to the next node. The link of the last node in the list is `None`, which indicates the end of the list.
+
+![alt text](image-2.png)
+
+To create singly linked list, we can we the `Node` class defined above, and then link the nodes together by setting the `next` attribute of each node to point to the next node in the list.
+
+```python
+head = Node(1)
+second = Node(2)
+third = Node(3)
+
+head.next = second
+second.next = third
+```
+
+Traversal of the linked lists means visiting all the nodes of the list, from the starting node to the last node. The process of traversing the singly linked list begins with the first node, displaying the data of the current node, following the pointers, and finally stopping when we reach the last node.
