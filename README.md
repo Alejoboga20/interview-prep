@@ -45,6 +45,10 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 3. [Algorithm Design Techniques](./hands-on-ds-algo/03-algo-design-techniques/README.md)
 4. [Arrays and Linked Lists](./hands-on-ds-algo/04-arrays-linked-lists/README.md)
 
+**System Design Interview - Volume 1**
+
+1. [Scale From Zero To Millions of Users](./system-design-interview-vol-1/01-chapter/README.md)
+
 ## Extra Resources
 
 ### Articles
