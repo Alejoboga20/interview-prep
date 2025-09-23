@@ -19,3 +19,5 @@ Load balancers distribute incoming traffic across multiple servers, ensuring no 
 In this case, users connect to the load balancer, which then forwards requests to one of the web servers. Web servers are not reachable directly from the internet anymore, which adds a layer of security. Communication happens over private networks (private IPs).
 
 4. Database Replication
+
+To improve read performance and provide redundancy, we can set up database replication. In a master-slave setup, the master database handles all write operations, while read operations can be distributed across multiple slave databases. This reduces the load on the master database and improves read performance. In case the master database fails, one of the slaves can be promoted to become the new master. It also provides data redundancy, ensuring that data is not lost in case of a failure.
