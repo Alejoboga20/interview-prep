@@ -46,3 +46,16 @@ Message queues are used to decouple components in a system, allowing them to com
 As the system grows, it's important to implement logging and monitoring to track system performance and identify issues. Tools like ELK Stack (Elasticsearch, Logstash, Kibana), Prometheus, and Grafana can be used for this purpose.
 
 7. Database Scaling
+
+Databases can be scaled vertically (upgrading the existing server) or horizontally (adding more servers). Horizontal scaling can be achieved through sharding, where data is partitioned across multiple database servers based on a shard key. This allows for better distribution of data and load, improving performance and scalability. A hash function can be used to determine which shard a particular piece of data belongs to.
+When implementing sharding, it's important to choose a shard key that evenly distributes data and minimizes cross-shard queries. Cross-shard queries can be complex and slow, so they should be avoided when possible.
+
+## Summary on How to Scale a System
+
+1. Keep web tier stateless: This allows for easy scaling by adding or removing web servers as needed.
+2. Build redundancy at every tier: Ensure that there are no single points of failure in the architecture.
+3. Cache data as much as you can.: This reduces the load on the database and improves performance.
+4. Support multiple data centers: This improves availability and reduces latency for users in different geographic locations.
+5. Host static assets in CDN: This improves load times and reduces the load on the web servers.
+6. Scale your data tier by sharding.
+7. Monitor everything: Implement logging and monitoring to track system performance and identify issues.
