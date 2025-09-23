@@ -34,3 +34,15 @@ A cache is a temporary storage area that holds frequently accessed data in memor
 6. Content Delivery Network (CDN)
 
 A CDN is a network of distributed servers that deliver web content to users based on their geographic location. It helps reduce latency and improve load times by caching static assets (like images, CSS, JavaScript) closer to the user's location. Popular CDN providers include Cloudflare, Akamai, and AWS CloudFront.
+
+**Note: Decoupling**: Decoupling components in the architecture allows for independent scaling, easier maintenance, and improved fault tolerance. For example, using a message queue (like RabbitMQ or AWS SQS) to decouple the web servers from background processing tasks allows each component to scale independently based on its specific needs.
+
+## Message Queues
+
+Message queues are used to decouple components in a system, allowing them to communicate asynchronously. They can help improve system performance and reliability by offloading tasks that don't need to be processed immediately.
+
+## Logging, Metrics, and Automation
+
+As the system grows, it's important to implement logging and monitoring to track system performance and identify issues. Tools like ELK Stack (Elasticsearch, Logstash, Kibana), Prometheus, and Grafana can be used for this purpose.
+
+7. Database Scaling
