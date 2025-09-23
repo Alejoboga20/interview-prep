@@ -59,3 +59,5 @@ When implementing sharding, it's important to choose a shard key that evenly dis
 5. Host static assets in CDN: This improves load times and reduces the load on the web servers.
 6. Scale your data tier by sharding.
 7. Monitor everything: Implement logging and monitoring to track system performance and identify issues.
+
+![alt text](image.png)
