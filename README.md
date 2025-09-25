@@ -48,6 +48,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 **System Design Interview - Volume 1**
 
 1. [Scale From Zero To Millions of Users](./system-design-interview-vol-1/01-chapter/README.md)
+2. [A Framework for System Design Interviews](./system-design-interview-vol-1/03-chapter/README.md)
 
 ## Extra Resources
 
