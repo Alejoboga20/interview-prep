@@ -19,3 +19,11 @@ Additional requirements:
 - Distributed system support.
 - Exception handling (show appropriate error messages).
 - High fault tolerance.
+
+2. Propose a high-level design
+
+We need to implement the limiter on the server side. We create a Rate Limiter middleware that will intercept incoming requests and check if the user has exceeded their allowed request rate. If they have, we return an error response. If not, we allow the request to proceed.
+
+![alt text](image.png)
+
+Usually rate limiting is implemented within a component called API Gateway. The API Gateway is the entry point for all incoming requests to the service. It is responsible for routing requests to the appropriate service, as well as handling authentication, authorization, and rate limiting.
