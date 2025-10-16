@@ -219,3 +219,12 @@ export class LeakyBucketShaper {
 **Fixed Window Counter**
 The Fixed Window Counter algorithm is a simple rate limiting algorithm that divides time into fixed windows (e.g., 1 minute) and counts the number of requests made in each window. If the number of requests exceeds a predefined limit, subsequent requests are denied until the next window begins.
 This algorithm is easy to implement and understand, but it can lead to bursts of traffic at the beginning of each window.
+
+**Sliding Window Log**
+The Sliding Window Log algorithm is a more advanced rate limiting algorithm that maintains a log of timestamps for each request. When a new request is made, the algorithm checks the log to see how many requests have been made in the past time window (e.g., 1 minute). If the number of requests exceeds a predefined limit, the request is denied. Otherwise, the request is allowed, and the timestamp is added to the log.
+This algorithm provides a more accurate representation of the request rate over time, but it requires more memory to store the log of timestamps.
+
+**Sliding Window Counter**
+
+The Sliding Window Counter algorithm is a hybrid approach that combines elements of both the Fixed Window Counter and Sliding Window Log algorithms. It divides time into fixed windows (e.g., 1 minute) and maintains a count of requests made in each window. When a new request is made, the algorithm checks the counts of the current and previous windows to determine if the request should be allowed or denied. If the combined count exceeds a predefined limit, the request is denied. Otherwise, the request is allowed, and the count for the current window is incremented.
+This algorithm provides a balance between accuracy and memory usage, making it suitable for many applications.
