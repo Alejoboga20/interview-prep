@@ -27,3 +27,100 @@ We need to implement the limiter on the server side. We create a Rate Limiter mi
 ![alt text](image.png)
 
 Usually rate limiting is implemented within a component called API Gateway. The API Gateway is the entry point for all incoming requests to the service. It is responsible for routing requests to the appropriate service, as well as handling authentication, authorization, and rate limiting.
+
+# Algorithms for rate limiting
+
+Identify the best algorithm for rate limiting. This depends on the specific requirements of the system. Some common algorithms include:
+
+- Token Bucket
+- Leaky Bucket
+- Fixed Window
+- Sliding Window Log
+- Sliding Window Counter
+
+**Token Bucket**
+
+The Token Bucket algorithm is a popular rate limiting algorithm that allows for bursts of traffic while maintaining a steady average rate. It works by maintaining a "bucket" of tokens, where each token represents the ability to make a request. Tokens are added to the bucket at a fixed rate, and when a request is made, a token is removed from the bucket. If there are no tokens available, the request is denied. One request consumes one token, when a request is made, a token is removed from the bucket. If there are no tokens available, the request is denied.
+To implement the algorithm, we need to define the following parameters:
+
+- Token generation rate (r): The rate at which tokens are added to the bucket (e.g., 5 tokens per second).
+- Bucket capacity (b): The maximum number of tokens that can be stored in the bucket (e.g., 10 tokens).
+
+```typescript
+// token-bucket.ts
+export class TokenBucket {
+	/** max tokens the bucket can hold (burst capacity) */
+	private readonly capacity: number;
+	/** tokens refilled per second */
+	private readonly refillPerSecond: number;
+
+	private tokens: number;
+	private lastRefillSec: number;
+	private nowSec = () => Date.now() / 1000; // swap in tests
+
+	constructor(opts: {
+		capacity: number; // e.g., 100
+		refillPerSecond: number; // e.g., 100/60 for "100 per minute"
+		nowSecProvider?: () => number;
+		initialTokens?: number; // default: capacity (start “full”)
+	}) {
+		if (opts.capacity <= 0) throw new Error('capacity must be > 0');
+
+		if (opts.refillPerSecond < 0)
+			throw new Error('refillPerSecond must be >= 0');
+
+		this.capacity = opts.capacity;
+		this.refillPerSecond = opts.refillPerSecond;
+		this.tokens = Math.min(opts.initialTokens ?? opts.capacity, opts.capacity);
+
+		if (opts.nowSecProvider) this.nowSec = opts.nowSecProvider;
+
+		this.lastRefillSec = this.nowSec();
+	}
+
+	/** Refill tokens based on elapsed time */
+	private refill() {
+		const now = this.nowSec();
+		const elapsed = Math.max(0, now - this.lastRefillSec);
+		if (elapsed > 0) {
+			this.tokens = Math.min(
+				this.capacity,
+				this.tokens + elapsed * this.refillPerSecond
+			);
+			this.lastRefillSec = now;
+		}
+	}
+
+	/**
+	 * Try to consume `n` tokens (default 1).
+	 * Returns { allowed, remaining, retryAfterSec }.
+	 */
+	consume(n = 1): {
+		allowed: boolean;
+		remaining: number;
+		retryAfterSec?: number;
+	} {
+		if (n <= 0) return { allowed: true, remaining: Math.floor(this.tokens) };
+
+		this.refill();
+
+		if (this.tokens >= n) {
+			this.tokens -= n;
+			return { allowed: true, remaining: Math.floor(this.tokens) };
+		}
+
+		// Not enough tokens — compute time until next token(s)
+		const need = n - this.tokens;
+		const retryAfterSec =
+			this.refillPerSecond > 0
+				? need / this.refillPerSecond
+				: Number.POSITIVE_INFINITY;
+
+		return {
+			allowed: false,
+			remaining: Math.floor(this.tokens),
+			retryAfterSec,
+		};
+	}
+}
+```
