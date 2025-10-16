@@ -215,3 +215,7 @@ export class LeakyBucketShaper {
 	}
 }
 ```
+
+**Fixed Window Counter**
+The Fixed Window Counter algorithm is a simple rate limiting algorithm that divides time into fixed windows (e.g., 1 minute) and counts the number of requests made in each window. If the number of requests exceeds a predefined limit, subsequent requests are denied until the next window begins.
+This algorithm is easy to implement and understand, but it can lead to bursts of traffic at the beginning of each window.
