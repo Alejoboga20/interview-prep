@@ -124,3 +124,94 @@ export class TokenBucket {
 	}
 }
 ```
+
+**Leaky Bucket**
+The Leaky Bucket algorithm is another popular rate limiting algorithm that is similar to the Token Bucket algorithm. It works by maintaining a "bucket" that leaks at a fixed rate. When a request is made, it is added to the bucket. If the bucket is full, the request is denied. The bucket leaks at a fixed rate, allowing for a steady flow of requests over time.
+This is usually implemented using a queue data structure. When a request is made, it is added to the queue. If the queue is full, the request is denied. The queue is processed at a fixed rate, allowing for a steady flow of requests over time.
+
+To implement the leaking bucket algorithm, we need to define the following parameters:
+
+- Leak rate (r): The rate at which requests are processed (e.g., 5 requests per second).
+- Bucket capacity (b): The maximum number of requests that can be stored in the bucket (e.g., 10 requests).
+
+```typescript
+// leaky-bucket-shaper.ts
+export type QueueLike<T> = {
+	enqueue(item: T): void;
+	dequeue(): T | undefined;
+	size(): number;
+	isEmpty(): boolean;
+};
+
+type Pending = { resolve: () => void; reject: (e: any) => void };
+
+export class LeakyBucketShaper {
+	private readonly capacity: number;
+	private readonly dripIntervalMs: number;
+	private readonly queue: QueueLike<Pending>;
+
+	private timer: NodeJS.Timeout | null = null;
+	private running = false;
+
+	constructor(opts: {
+		capacity: number; // max queued items
+		leakPerSecond: number; // steady rate (items/sec)
+		queue: QueueLike<Pending>;
+	}) {
+		if (opts.capacity <= 0) throw new Error('capacity must be > 0');
+		if (opts.leakPerSecond <= 0) throw new Error('leakPerSecond must be > 0');
+		this.capacity = opts.capacity;
+		this.dripIntervalMs = 1000 / opts.leakPerSecond;
+		this.queue = opts.queue;
+	}
+
+	/** Start leaking at a constant rate */
+	start() {
+		if (this.running) return;
+		this.running = true;
+		this.scheduleNext();
+	}
+
+	/** Stop leaking */
+	stop() {
+		this.running = false;
+		if (this.timer) {
+			clearTimeout(this.timer);
+			this.timer = null;
+		}
+	}
+
+	/** Enqueue a unit of work; resolves when it's released (your code runs then). Rejects if queue is full. */
+	acquire(): Promise<void> {
+		if (this.queue.size() >= this.capacity) {
+			return Promise.reject(new Error('LeakyBucket full'));
+		}
+		return new Promise<void>((resolve, reject) => {
+			this.queue.enqueue({ resolve, reject });
+			// Ensure pump is active
+			this.start();
+		});
+	}
+
+	private scheduleNext() {
+		if (!this.running) return;
+		// If queue is empty, pause until something arrives
+		if (this.queue.isEmpty()) {
+			// Avoid busy timers when idle
+			this.timer = setTimeout(() => this.scheduleNext(), this.dripIntervalMs);
+			return;
+		}
+
+		// Release exactly one item, then schedule next drip
+		const pending = this.queue.dequeue();
+		if (pending) {
+			try {
+				pending.resolve();
+			} catch (e) {
+				pending.reject?.(e);
+			}
+		}
+		this.timer = setTimeout(() => this.scheduleNext(), this.dripIntervalMs);
+	}
+}
+```
