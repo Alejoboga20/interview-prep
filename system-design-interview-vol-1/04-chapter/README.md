@@ -243,3 +243,8 @@ The counter should be implemented using an in-memory cache like Redis because it
 4. Detailed Design
 
 ![alt text](image-2.png)
+
+While implementing the rate limiter, we need to consider the following:
+
+- Concurrency: We need to ensure that the rate limiter can handle concurrent requests from multiple users. This can be achieved by using atomic operations in Redis or by using distributed locks (even though they can add latency).
+- Synchronization: In a distributed system, we need to ensure that the rate limiter is synchronized across all instances of the service. This can be achieved by using a centralized cache like Redis.
