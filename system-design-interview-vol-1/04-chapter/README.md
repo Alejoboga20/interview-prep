@@ -228,3 +228,11 @@ This algorithm provides a more accurate representation of the request rate over 
 
 The Sliding Window Counter algorithm is a hybrid approach that combines elements of both the Fixed Window Counter and Sliding Window Log algorithms. It divides time into fixed windows (e.g., 1 minute) and maintains a count of requests made in each window. When a new request is made, the algorithm checks the counts of the current and previous windows to determine if the request should be allowed or denied. If the combined count exceeds a predefined limit, the request is denied. Otherwise, the request is allowed, and the count for the current window is incremented.
 This algorithm provides a balance between accuracy and memory usage, making it suitable for many applications.
+
+3. High-level Architecture
+
+At a high level, the rate limiter is a counter that keeps track of how many requests have been made by each user in a given time period. When a request is made, the rate limiter checks the counter to see if the user has exceeded their allowed request rate. If they have, the request is denied. If not, the request is allowed, and the counter is incremented.
+
+The counter should be implemented using an in-memory cache like Redis because it provides fast access times and can handle a large number of requests. Each user will have their own counter, which will be stored in the cache with a key that includes the user's ID and the time period (e.g., minute, hour).
+
+![alt text](image-1.png)
