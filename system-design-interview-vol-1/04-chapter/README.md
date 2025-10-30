@@ -236,3 +236,10 @@ At a high level, the rate limiter is a counter that keeps track of how many requ
 The counter should be implemented using an in-memory cache like Redis because it provides fast access times and can handle a large number of requests. Each user will have their own counter, which will be stored in the cache with a key that includes the user's ID and the time period (e.g., minute, hour).
 
 ![alt text](image-1.png)
+
+- Limiting Rules: should be written in configuration files and saved in memory. (.using JSON or YAML format).
+- When the limit is reach we should respond with HTTP 429 Too Many Requests status code.
+
+4. Detailed Design
+
+![alt text](image-2.png)
