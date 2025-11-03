@@ -12,4 +12,6 @@ To assign an index to a node, we can use the following formula:
 index = hash(node_key) % number_of_nodes; // node_key could be the IP address or hostname of the node and number_of_nodes is the total count of nodes in the system
 ```
 
-This formula works well when the number of nodes is static. However, in a distributed system where nodes can be added or removed dynamically, this approach can lead to significant data reorganization.
+This formula works well when the number of nodes is static. However, in a distributed system where nodes can be added or removed dynamically, this approach can lead to significant data reorganization (remapping of keys to nodes) whenever the number of nodes changes. For example, if we have 4 nodes and we add a 5th node, all keys will need to be remapped because the modulus operation will yield different results.
+
+2. **The solution**: Consistent Hashing is a special kind of hashing that minimizes the number of keys that need to be remapped when a node is added or removed. We need to remap only a small fraction of the keys, rather than all keys. Here we just need to remap the keys that were assigned to the node that is being removed or the new node that is being added. (k/n keys where k is the total number of keys and n is the total number of nodes).
