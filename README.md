@@ -50,6 +50,7 @@ All the code snippets will be written in `Python` or `JavaScript/TypeScript`.
 1. [Scale From Zero To Millions of Users](./system-design-interview-vol-1/01-chapter/README.md)
 2. [A Framework for System Design Interviews](./system-design-interview-vol-1/03-chapter/README.md)
 3. [Design a Rate Limiter](./system-design-interview-vol-1/04-chapter/README.md)
+4. [Design Consistent Hashing](./system-design-interview-vol-1/05-chapter/README.md)
 
 ## Extra Resources
 
